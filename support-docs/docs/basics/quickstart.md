@@ -12,7 +12,7 @@ In order to be able to login into PDC system, you need a PDC account linked with
 
 1. First follow the instructions on how to generate an SSH key pair, see [Generating SSH keys](../login/ssh_keys.md).
 1. Goto [PDC login portal](https://loginportal.pdc.kth.se/) and follow instructions.
-1. Login to PDC resources…
+1. Login to PDC resources
    ```text
    ssh <user name>@dardel.pdc.kth.se
    ```
@@ -165,22 +165,22 @@ The build is done within the PrgEnv-cray environment using the Cray Fortran comp
 ```text
 # Check which compiler the compiler wrapper is pointing to
 ftn --version
-# returns Cray Fortran   Version 15 0 1
+# returns Cray Fortran : Version 17.0.0
 
 # Compile the code
 ftn hello_world_mpi.f90 -o hello_world_mpi.x
 
-# Test the code in interactive session 
+# Test the code in interactive session
 # First queue to get one node reserved for 10 minutes
 salloc -N 1 -t 0:10:00 -A <project name> -p main
 # wait for the node  Then run the program using 128 MPI ranks with
 srun -n 128 ./hello_world_mpi.x
 # with program output to standard out
-#    
+#
 # Processor  123  of  128   Hello World
-#    
+#
 # Processor  47  of  128   Hello World
-#    
+#
 ```
 
 Having here used the **ftn** compiler wrapper, the linking to the cray-mpich library was done without the need to specify linking flags. As is expected for this code, in runtime each MPI rank is writing its Hello World to standard output **without** any synchronization with the other ranks.
@@ -196,29 +196,29 @@ wget https://people.math.sc.edu/Burkardt/c_src/fftw/fftw_test.c
 # Change from the PrgEnv cray to the PrgEnv gnu environment
 ml PDC/23.12
 ml cpeGNU/23.12
-# Lmod is automatically replacing "cpeGNU 23 12" with "PrgEnv gnu 8 5 0" 
-# Lmod is automatically replacing "cce 17 0 0" with "gcc 12 3" 
-# Lmod is automatically replacing "PrgEnv cray 8 5 0" with "cpeGNU 23 12" 
-# Due to MODULEPATH changes  the following have been reloaded 
-# 1  cray libsci 23 12 5     2  cray mpich 8 1 28
+#Lmod is automatically replacing "cpeGNU/23.12" with "PrgEnv-gnu/8.5.0".
+#Lmod is automatically replacing "cce/17.0.0" with "gcc-native/12.3".
+#Lmod is automatically replacing "PrgEnv-cray/8.5.0" with "cpeGNU/23.12".
+#Due to MODULEPATH changes, the following have been reloaded:
+#  1) cray-libsci/23.12.5     2) cray-mpich/8.1.28
 
 # Check which compiler the cc compiler wrapper is pointing to
 cc --version
-gcc-12 (SUSE Linux) 12.3.0
+# gcc-12 (SUSE Linux) 12.3.0
 
 ml
-# The listing reveals that cray libsci 23 12 5 is already loaded 
+# The listing reveals that cray-libsci/23.12.5 is already loaded
 
-# In addition  the program needs linking also to a Fourier transform library 
+# In addition  the program needs linking also to a Fourier transform library
 ml spider fftw
-# gives a listing of available Fourier transform libraries 
+# gives a listing of available Fourier transform libraries
 # Load a recent version of the Cray FFTW library with
-ml cray-fftw/3.3.10.6
+ml cray-fftw/3.3.10.7
 
 # Build the code with
 cc fftw_test.c -o fftw_test.x
 
-# Test the code in interactive session 
+# Test the code in interactive session
 # First queue to get one reserved core for 10 minutes
 salloc -n 1 -t 0:10:00 -A <project name> -p shared
 # wait for the core  Then run the program with
@@ -236,8 +236,8 @@ ml easybuild-user/4.9.1
 
 # Look for a recipe for the Libxc library
 eb -S libxc
-# Returns a list of available EasyBuild easyconfig files 
-# Choose an easyconfig file for the cpeGNU 23 12 toolchain 
+# Returns a list of available EasyBuild easyconfig files
+# Choose an easyconfig file for the cpeGNU 23 12 toolchain
 
 # Make a dry run
 eb libxc-6.2.2-cpeGNU-23.12.eb --robot --dry-run
@@ -245,8 +245,8 @@ eb libxc-6.2.2-cpeGNU-23.12.eb --robot --dry-run
 # Check if dry run looks reasonable  Then proceed to build with
 eb libxc-6.2.2-cpeGNU-23.12.eb --robot
 
-# The program is now locally installed in the user s
-# ~  local easybuild directory and can be loaded with
+# The program is now locally installed in the user's
+# ~/.local/easybuild directory and can be loaded with
 ml PDC/23.12
 ml easybuild-user/4.9.1
 ml libxc/6.2.2-cpeGNU-23.12
@@ -287,20 +287,20 @@ For more details on the partition, see [Dardel partitions](../run_jobs/job_sched
 In this example we will run a batch job for the `hello_world_mpi.f90` code. To this end, we prepare a *jobscript.sh*
 
 ```text
-#! bin bash
+#!/bin/bash
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A  project name 
+#SBATCH -A <project name>
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # 10 minutes wall clock time will be given to this job
-#SBATCH  t 00 10 00
+#SBATCH -t 00:10:00
 # The partition
-#SBATCH  p shared
+#SBATCH -p shared
 # The number of tasks requested
-#SBATCH  n 64
+#SBATCH -n 64
 # The number of cores per task
-#SBATCH  c 1
+#SBATCH -c 1
 
 echo "Script initiated at `date` on `hostname`"
 srun -n 64 hello_world_mpi.x
@@ -335,13 +335,8 @@ For more details on how to write batch scripts and submit batch jobs to queues, 
 **Example 2:** Submit a batch job to queue for a center installed software
 
 In this example we will perform a calculation on two Dardel CPU compute nodes with
-the [ABINIT](http://www.abinit.org/) package for modeling of condensed matter.
-The example calculation is a density functional theory (DFT) simulation of the properties of the material SrVO3. ABINIT is available as a PDC center installed software, as listed on the page [Available Software](https://www.pdc.kth.se/software).
-
-For ABINIT can be found
-[general information](https://www.pdc.kth.se/software/software/ABINIT/index_general.html/),
-[use information](https://www.pdc.kth.se/software/software/ABINIT/cpe23.12/9.10.3/index_using.html/) and
-[build information](https://www.pdc.kth.se/software/software/ABINIT/cpe23.12/9.10.3/index_building.html/).
+the [ABINIT](https://www.abinit.org/) package for modeling of condensed matter.
+The example calculation is a density functional theory (DFT) simulation of the properties of the material SrVO3. ABINIT is available as a PDC center installed software, as listed on the page [Available Software](https://support.pdc.kth.se/doc/applications/). Reference information on how to use and build ABINIT on Dardel can be found at [ABINIT](https://support.pdc.kth.se/doc/software-docs/abinit/).
 
 We activate the ABINIT software module with
 
@@ -354,8 +349,8 @@ In order to learn more about what environment variables were set by the *ml* com
 
 ```text
 ml show abinit/9.10.3-cpeGNU-23.12
-#which reveals that
-#  pdc software 23 12 eb software abinit 9 10 3 cpeGNU 23 12 bin
+# which reveals that
+# /pdc/software/23.12/eb/software/abinit/9.10.3-cpeGNU-23.12/bin
 # was appended to the PATH
 ```
 
@@ -363,7 +358,7 @@ In order to set up the simulation for SrVO3 we need an *abi* input file and
 a set of pseudopotentials for the chemical elements. These are contained in
 the ABINIT 9.10.3 release
 
-Download and extract the ABINIT 9.6.2 release
+Download and extract the ABINIT 9.10.3 release
 
 ```text
 mkdir ABINIT
@@ -382,17 +377,17 @@ should be the path to the pseudopotentials.
 ```text
 #! bin bash
 # time allocation
-#SBATCH  A  your project account 
+#SBATCH -A <your project account>
 # name of this job
-#SBATCH  J abinit job
+#SBATCH -J abinit job
 # wall time for this job
-#SBATCH  t 00 30 00
+#SBATCH -t 00:30:00
 # number of nodes
-#SBATCH   nodes=2
+#SBATCH --nodes=2
 # The partition
-#SBATCH  p main
+#SBATCH -p main
 # number of MPI processes per node
-#SBATCH   ntasks per node=128
+#SBATCH --ntasks-per-node=128
 
 ml PDC/23.12
 ml abinit/9.10.3-cpeGNU-23.12
@@ -427,8 +422,8 @@ program: abinit
 version: 9.10.3
 start_datetime: Wed Mar 13 13:06:53 2024
 end_datetime: Wed Mar 13 13:07:03 2024
-overall_cpu_time:        2631.2
-overall_wall_time:        2691.9
+overall_cpu_time: 2631.2 s
+overall_wall_time: 2691.9 s
 exit_requested_by_user: no
 timelimit: 0
 pseudos:
