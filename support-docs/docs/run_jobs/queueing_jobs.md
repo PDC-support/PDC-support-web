@@ -32,16 +32,19 @@ For running large time consuming programs, sending the job to the queue system i
   ```
 
   The state of job is listed in the ST column. The most common job state codes are:
+
   * R: Running
   * PD: Pending
   * CG: Completing
   * CA: Cancelled
 
   For more job state codes please visit [Slurm Job State Codes](https://slurm.schedmd.com/squeue.html#lbAG).
+
 * To get further information about your jobs:
   ```default
   scontrol show job <jobid>
   ```
+
 * To get detailed status information of a running job/step:
   ```default
   sstat --jobs=your_job-id
@@ -54,7 +57,9 @@ For running large time consuming programs, sending the job to the queue system i
   ```default
   sstat --jobs=your_job-id --format=JobID,aveCPU,MaxRRS,NTasks
   ```
-* To get detailed information on past jobs:
+
+### To get detailed information on past jobs
+
   ```default
   sacct
   ```
