@@ -7,10 +7,10 @@ Job arrays are a feature of the SLURM queue system to manage many similar jobs t
 Let’s say you have the following script, which runs `myprog` with the arguments 0,1,…,9.
 
 ```bash
-#! bin bash  l
-#SBATCH  A project
-#SBATCH  N 1
-#SBATCH  t 00 10 00
+#!/bin/bash -l
+#SBATCH  -A project
+#SBATCH  -N 1
+#SBATCH  -t 00:10:00
 
 for i in $(seq 0 9); do
 	srun -n 1 myprog $i
@@ -21,11 +21,11 @@ If each iteration takes a long time, you may want to run them in parallel instea
 We can achieve this by rewriting the script so that each iteration is submitted as a separate job using a job array.
 
 ```bash
-#! bin bash  l
-#SBATCH  A project
-#SBATCH  N 1
-#SBATCH  t 00 01 00
-#SBATCH  a 0 9
+#!/bin/bash -l
+#SBATCH  -A project
+#SBATCH  -N 1
+#SBATCH  -t 00:01:00
+#SBATCH  -a 0-9
 
 srun -n 1 myprog $SLURM_ARRAY_TASK_ID
 ```
