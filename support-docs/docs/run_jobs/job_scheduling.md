@@ -49,7 +49,7 @@ all the time.
 
 ### Example of scheduling
 
-Of course both Anna and Björn would like their jobs to be run as soon as
+Of course both Anna and Björn would like their jobs to be run as soon as
 possible.
 
 However, in the current situation, the scheduler will give priority to Björn’s
@@ -62,7 +62,7 @@ into consideration when deciding which job will be scheduled next.
 
 ## Dardel compute nodes
 
-Compute nodes on Dardel have 4 different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software, therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 128 physical cores per node.
+Compute nodes on Dardel have 5 different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software, therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 128 physical cores per node.
 
 | Node type   |   Node count | RAM    | Partition          | Available   | Example used flag   |
 |-------------|--------------|--------|--------------------|-------------|---------------------|
@@ -70,6 +70,7 @@ Compute nodes on Dardel have 4 different flavors with different amounts of memor
 | Large node  |          268 | 512 GB | main, memory       | 456704 MB   | `--mem=440GB`       |
 | Huge node   |            8 | 1 TB   | main, memory       | 915456 MB   | `--mem=880GB`       |
 | Giant node  |           10 | 2 TB   | memory             | 1832960 MB  | `--mem=1760GB`      |
+| GPU node    |           62 | 512 GB | gpu                | 456704 MB   | `--mem=440GB`       |
 
 More details on the hardware is available at
 [https://www.pdc.kth.se/hpc-services/computing-systems/about-dardel-1.1053338](https://www.pdc.kth.se/hpc-services/computing-systems/about-dardel-1.1053338).
@@ -94,10 +95,11 @@ The compute nodes on Dardel are divided into four partitions. Each job must spec
 
 | Partition name   | Characteristics                                                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| main             | Thin, large and huge nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours
+| main             | Thin, large and huge nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours                                                                                             |
 | long             | Thin nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 7 days                                                                                                               |
 | shared           | Thin nodes<br/><br/>Jobs are allocated to cores, not nodes<br/><br/>By default granted one core, get more with `-n or -c`<br/><br/>Job shares node with other jobs<br/><br/>Maximum job time 7 days |
-| memory           | Large, huge and giant nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 7 days                                                                                            |
+| memory           | Large, huge and giant nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 7 days                                                                                              |
+| gpu              | GPU nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours                                                                                                              |
 
 ## How to run on shared partitions
 
