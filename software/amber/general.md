@@ -11,15 +11,28 @@ carry out molecular dynamics simulations, particularly on biomolecules.
 None of the individual programs carries this name, but the various parts
 work reasonably well together, and provide a powerful framework for
 many common calculations.
+
 The term Amber is also used to refer to the empirical force fields that
 are implemented in Amber. It should be recognized however, that the code
 and force field are separate: several other computer packages have
 implemented the Amber force fields, and other force fields can be
 implemented with the Amber programs.
+
 In order to use Amber22, you need to
 ```
-$ ml amber/22-cpeGNU-22.06-ambertools-22
+$ ml amber/22-cpeGNU-23.12-ambertools-22
 ```
+
+To check for other available versions of Amber, you can use
+
+```
+$ module avail amber
+```
+
+!!! note
+
+    Note that you need to load the `PDC` module before loading the amber module
+
 This will append the directory containing all Amber executables to your PATH
 variable, and set various library paths.
 Many of the Amber subprograms come in serial, parallel and other versions,
@@ -38,7 +51,7 @@ distributions and activate the mpi4py conda environment.
 
 ```
 #!/bin/bash -l
-```
+
 # Name of you allocation
 #SBATCH -A XXXX-XX-XX
 # Name of the job
@@ -51,15 +64,15 @@ distributions and activate the mpi4py conda environment.
 #SBATCH --nodes=2
 # Number of MPI processes per node
 #SBATCH --ntasks-per-node=16
-module load amber/22-cpeGNU-22.06-ambertools-22
+module load amber/22-cpeGNU-23.12-ambertools-22
 # we run on two nodes with 16 cores per node
 srun pmemd.MPI -O -i input.in -o output.out -p prm.prmtop -c coords.rst -r restart.rst -x traj.mdcrd
-
+```
 ## 
 
 ```
 #!/bin/bash -l
-```
+
 # Name of you allocation
 #SBATCH -A XXXX-XX-XX
 # Name of the job
@@ -72,7 +85,7 @@ srun pmemd.MPI -O -i input.in -o output.out -p prm.prmtop -c coords.rst -r resta
 #SBATCH --nodes=2
 # Number of MPI processes per node
 #SBATCH --ntasks-per-node=32
-module load amber/22-cpeGNU-22.06-ambertools-22
+module load amber/22-cpeGNU-23.12-ambertools-22
 # MMGBSA calculation of a previously generated trajectory
 srun MMPBSA.py.MPI -O -i MMPBSA.in -o MMPBSA.dat -sp solvated.prmtop -cp complex.prmtop -rp receptor.prmtop -lp ligand.prmtop -y trajectory.nc >& MMPBSA.log
-
+```

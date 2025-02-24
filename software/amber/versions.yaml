@@ -24,3 +24,7 @@ resources:
     versions:
       - version: 18
       - version: 22
+  - resource: cpe23.12
+    versions:
+      - version: 22
+      - version: 24
