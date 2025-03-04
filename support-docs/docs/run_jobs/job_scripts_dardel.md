@@ -10,7 +10,7 @@ Follow links to find information about [Dardel compute nodes](job_scheduling.md#
 
 **Example 1:**
 
-Below is a job script example for a pure MPI job. For PDC-installed programs, you can find examples in the [software page](https://www.pdc.kth.se/software).
+Below is a job script example for a pure MPI job. For PDC-installed programs, you can find examples in the [software page](https://support.pdc.kth.se/doc/applications/).
 
 ```text
 #! bin bash -l
