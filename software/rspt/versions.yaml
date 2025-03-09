@@ -2,6 +2,7 @@ resources:
   - resource: cpe23.12
     versions:
       - version: 20231004
+      - version: 20250228
   - resource: cpe21.11
     versions:
       - version: 20211004

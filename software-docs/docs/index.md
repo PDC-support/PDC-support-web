@@ -75,7 +75,7 @@ PDC takes no responsibility for the correctness of results produced with the bin
 | [Quantum-espresso](quantum-espresso/index.md) | Dardel/cpe23.12 | 7.3 |
 || Dardel/cpe23.03 | 7.2, 7.3 |
 | [R](r/index.md) | Dardel/cpe23.12 | 4.4.1, 4.1.2 |
-| [Rspt](rspt/index.md) | Dardel/cpe23.12 | 20231004 |
+| [Rspt](rspt/index.md) | Dardel/cpe23.12 | 20231004, 20250228 |
 || Dardel/cpe23.03 | 20231004 |
 | [Scalasca](scalasca/index.md) | Dardel/cpe23.12 | 2.6.1-cpeCray, 2.6.1-cpeGNU |
 | [Score-p](score-p/index.md) | Dardel/cpe23.12 | 8.4-cpeGNU, 8.4-cpeCray |

@@ -10,7 +10,7 @@ keywords:
 
 | Resource | Version |
 |---|---|
-| Dardel/cpe23.12 | 20231004 |
+| Dardel/cpe23.12 | 20231004, 20250228 |
 | Dardel/cpe23.03 | 20231004 |
 
 ## General information
