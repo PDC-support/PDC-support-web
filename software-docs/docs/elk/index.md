@@ -78,7 +78,7 @@ For information on how to submit jobs on Dardel, see [Queueing jobs](https://sup
 
 ## How to build Elk
 
-The program was installed using EasyBuild https://docs.easybuild.io/en/latest/.
+The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/).
 A build in your local file space can be done with
 
 ```bash

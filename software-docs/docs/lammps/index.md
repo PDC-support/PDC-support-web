@@ -56,7 +56,7 @@ This will run LAMMPS (`lmp`) with 256 cores (2 nodes), and will read the input s
 
 ## How to build LAMMPS
 
-The program was installed using EasyBuild https://docs.easybuild.io/en/latest/.
+The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/).
 A build in your local file space can be done with
 
 ```bash

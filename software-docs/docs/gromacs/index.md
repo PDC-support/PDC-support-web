@@ -86,3 +86,16 @@ srun -n 1 gmx_mpi grompp -c conf.gro -p topol.top -f grompp.mdp
 srun gmx_mpi mdrun -s topol.tpr -deffnm gmx_md
 ```
 
+## How to build GROMACS
+
+The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/).
+A build in your local file space can be done with
+
+```bash
+ml PDC/23.12
+ml easybuild-user/4.9.1
+eb gromacs-2024.2-cpeGNU-23.12.eb --robot
+```
+
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+

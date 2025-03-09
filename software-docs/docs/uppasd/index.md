@@ -73,7 +73,7 @@ A collection of scripts for preprocessing and postprocessing of UppASD input and
 
 ## How to build UppASD
 
-The program was installed using EasyBuild https://docs.easybuild.io/en/latest/.
+The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/).
 A build in your local file space can be done with
 
 ```bash
