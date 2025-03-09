@@ -26,6 +26,7 @@ PDC takes no responsibility for the correctness of results produced with the bin
 | [Abaqus](abaqus/index.md) | Dardel/cpe23.12 | 2025, 2024, 2021, 2019 |
 | [Abinit](abinit/index.md) | Dardel/cpe23.12 | 10.0.5, 9.10.3 |
 || Dardel/cpe23.03 | 9.10.3 |
+| [Amber](amber/index.md) | Dardel/cpe23.12 | 22, 24 |
 | [Ansys-fluent](ansys-fluent/index.md) | Dardel/cpe23.12 | 24.2, 23.1, 21.2 |
 | [Comsol](comsol/index.md) | Dardel/cpe23.12 | 6.3, 6.2, 6.1, 6.0, 5.6 |
 | [Cosma](cosma/index.md) | Dardel/cpe23.12 | 2.6.6 |
@@ -52,7 +53,7 @@ PDC takes no responsibility for the correctness of results produced with the bin
 || Dardel-GPU/cpe23.12.gpu | 2.4.0 |
 | [Julia](julia/index.md) | Dardel/cpe23.12 | 1.10.2 |
 || Dardel/cpe23.03 | 1.10.2, 1.9.3 |
-| [Lammps](lammps/index.md) | Dardel/cpe23.12 | 2Aug2023 |
+| [Lammps](lammps/index.md) | Dardel/cpe23.12 | 2Aug2023, 29Aug2024 |
 | [Libxc](libxc/index.md) | Dardel/cpe23.12 | 6.2.2 |
 | [Linaro-forge](linaro-forge/index.md) | Dardel/cpe23.12 | 24.0 |
 | [Mathematica](mathematica/index.md) | Dardel/cpe23.12 | 14.0.0 |

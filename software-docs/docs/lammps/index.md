@@ -10,7 +10,7 @@ keywords:
 
 | Resource | Version |
 |---|---|
-| Dardel/cpe23.12 | 2Aug2023 |
+| Dardel/cpe23.12 | 2Aug2023, 29Aug2024 |
 
 ## General information
 
@@ -53,6 +53,19 @@ srun lmp < infile > outfile
 ```
 
 This will run LAMMPS (`lmp`) with 256 cores (2 nodes), and will read the input specified in `infile` and write to `outfile` in the directory the job was submitted. Submit the batch script with the `sbatch` command, see also the [How to run jobs](https://www.pdc.kth.se/support/documents/run_jobs/job_scheduling.html).
+
+## How to build LAMMPS
+
+The program was installed using EasyBuild https://docs.easybuild.io/en/latest/.
+A build in your local file space can be done with
+
+```bash
+ml PDC/23.12
+ml easybuild-user/4.9.1
+eb lammps-29Aug2024-cpeGNU-23.12.eb --robot
+```
+
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
 
 ## More information
 For more information, refer to the [LAMMPS manual](https://docs.lammps.org/Manual.html).

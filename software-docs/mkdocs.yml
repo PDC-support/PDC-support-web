@@ -17,6 +17,7 @@ nav:
   - Applications:
     - Abaqus: abaqus/index.md
     - Abinit: abinit/index.md
+    - Amber: amber/index.md
     - Ansys-fluent: ansys-fluent/index.md
     - Comsol: comsol/index.md
     - Cp2k: cp2k/index.md
@@ -80,6 +81,7 @@ nav:
     - Matlab: matlab/index.md
     - R: r/index.md
   - Molecular dynamics:
+    - Amber: amber/index.md
     - Gromacs: gromacs/index.md
     - Lammps: lammps/index.md
     - Namd: namd/index.md
