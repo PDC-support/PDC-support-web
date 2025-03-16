@@ -151,7 +151,7 @@ conda deactivate
 
 ## How to use
 
-# Load the Minionda module
+# Load the Miniconda module
 To list all available Miniconda modules on Dardel, type:
 ```
 $ module load PDC
