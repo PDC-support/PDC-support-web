@@ -6,8 +6,7 @@ import re
 # Constants
 #-------------------------------------------------------------------------------
 SOFTWARE_DIR='software'
-SOFTWARE_MAIN='software-docs'
-SOFTWARE_DOCS=SOFTWARE_MAIN+'/docs'
+SOFTWARE_DOCS='docs/applications/'
 #-------------------------------------------------------------------------------
 # get files and folder names of folder dirpath
 def getDirectoryList(dirpath,mask):
@@ -114,21 +113,20 @@ def getClusterText(resource,clusters):
 #-------------------------------------------------------------------------------
 # Write the YAML file with categories and software
 def writeYAMLMenu(keywords):
-  fp=open(SOFTWARE_MAIN+"/mkdocs.yml","a")
+  fp=open("mkdocs.yaml","a")
   keywords=dict(sorted(keywords.items()))
   for key in keywords:
     keywords[key].sort()
-    fp.write("  - %s:\n" % (key.capitalize()))
+    fp.write("    - %s:\n" % (key.capitalize()))
     for value in keywords[key]:  
-      fp.write("    - %s: %s\n" % (value.capitalize(),os.path.join(value,"index.md")))
+      fp.write("      - %s: %s\n" % (value.capitalize(),os.path.join("applications",value,"index.md")))
   fp.close()
 #-------------------------------------------------------------------------------
 def main():
-  os.system("rm -rf %s/*" % (SOFTWARE_DOCS))
-  os.system("cp %s/template/mkdocs.yml %s" % (SOFTWARE_MAIN,SOFTWARE_MAIN))
-  os.system("cp %s/template/index.md %s" % (SOFTWARE_MAIN,SOFTWARE_DOCS))
-  os.system("cp -r %s/template/static %s" % (SOFTWARE_MAIN,SOFTWARE_DOCS))
-  with open(os.path.join(SOFTWARE_MAIN, "clusters.yaml"), 'r') as file:
+  os.system("cp template/mkdocs.yaml .")
+  os.system("mkdir -p %s" % (SOFTWARE_DOCS,))
+  os.system("cp template/index.md %s" % (SOFTWARE_DOCS,))
+  with open("clusters.yaml", 'r') as file:
     clusters = yaml.safe_load(file)
   softwares,files=getDirectoryList(SOFTWARE_DIR,'')
   fpidx=open(SOFTWARE_DOCS+"/index.md","a")

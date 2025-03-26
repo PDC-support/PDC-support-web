@@ -195,7 +195,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         for idx, arg in enumerate(sys.argv):
             if arg == "-h":
-                print("Usage: create <command> ...\n")
+                print("Usage: update_docs...\n")
                 print("\n-h")
                 print("Help")
                 print("\n-g")
@@ -203,5 +203,5 @@ if __name__ == "__main__":
                 sys.exit(0)
             if arg == "-g":
                 gittest = False
-    main(gittest, "docs/doc", "web/public")
+    main(gittest, "docs/doc", "site")
 #-------------------------------------------------------------------------------
