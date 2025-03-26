@@ -42,7 +42,7 @@ srun ./myexe > my_output_file
 
 **Example 2:**
 
-Below is another example for a hybrid MPI+OpenMP program. This example will place 16 MPI processes with 8 threads each on each compute node.
+Below is another example for a hybrid MPI+OpenMP program. This example will place 16 MPI processes with 8 threads each on each compute node. The *--nomultithread* option for *srun* is to ensure correct placement of OpenMP threads.
 
 ```text
 #! bin bash  l
