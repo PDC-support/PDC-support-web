@@ -72,9 +72,8 @@ Below is another example for a hybrid MPI+OpenMP program. This example will plac
 
 # Number and placement of OpenMP threads
 export OMP_NUM_THREADS=8
-export OMP_PLACES=cores
 
-# for slurm 22 05
+# for slurm >22 05
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # Run the executable named myexe
