@@ -168,7 +168,7 @@ def main(gittest, target, html_path):
     upload_html_files(kth_username, kth_ubuntu_host, html_path, afs_path_to_target_tmp)
 
     # Move current pages to old
-    move_folder(kth_username, kth_ubuntu_host, afs_path_to_target_latest, afs_path_to_target_old, exit_after_failure=False)
+    move_folder(kth_username, kth_ubuntu_host, afs_path_to_target_latest, afs_path_to_target_old)
 
     # Move new pages to current
     move_folder(kth_username, kth_ubuntu_host, afs_path_to_target_tmp, afs_path_to_target_latest)
