@@ -42,7 +42,7 @@ srun ./myexe > my_output_file
 
 **Example 2:**
 
-Below is another example for a hybrid MPI+OpenMP program. This example will place 16 MPI processes with 8 threads each on each compute node. Please note that `--cpus-per-task` needs to be set as 2x `OMP_NUM_THREADS` to ensure correct placement of the MPI processes, because simultaneous multithreading (SMT) is enabled on AMD processors. In addition, `OMP_PLACES=cores` is also necessary to ensure correct placement of the threads.
+Below is another example for a hybrid MPI+OpenMP program. This example will place 16 MPI processes with 8 threads each on each compute node.
 
 ```text
 #! bin bash  l
@@ -65,7 +65,7 @@ Below is another example for a hybrid MPI+OpenMP program. This example will plac
 #SBATCH --nodes=4
 
 # Number of MPI tasks per node
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks-per-node=8
 # Number of logical cores hosting OpenMP threads
 # Note that cpus per task is set as 2x OMP NUM THREADS
 #SBATCH --cpus-per-task=16
@@ -79,7 +79,7 @@ export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # Run the executable named myexe
 # and write the output into my output file
-srun ./myexe > my_output_file
+srun --hint=nomultithread ./myexe > my_output_file
 ```
 
 **Example 3:**
