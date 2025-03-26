@@ -30,13 +30,6 @@ def check_mkdocs(python_exe):
     get_command_output([python_exe, "-c", "import mkdocs"])
     print("OK\n")
 #-------------------------------------------------------------------------------
-def check_hugo():
-    print("Checking Hugo ...")
-    if shutil.which("hugo") is None:
-        print("*** Hugo was not found!")
-        exit(1)
-    print("OK\n")
-#-------------------------------------------------------------------------------
 def check_git_status():
     print("Checking git status ...")
     output = get_command_output(["git", "status", "--porcelain"])
@@ -155,7 +148,6 @@ def main(gittest, target, html_path):
 
     python_exe = sys.executable
     check_mkdocs(python_exe)
-    check_hugo()
 
     kth_username = check_local_kerberos_ticket()
     kth_ubuntu_host = select_kth_ubuntu_host(kth_username)
