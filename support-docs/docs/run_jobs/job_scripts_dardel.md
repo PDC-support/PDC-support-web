@@ -65,10 +65,10 @@ Below is another example for a hybrid MPI+OpenMP program. This example will plac
 #SBATCH --nodes=4
 
 # Number of MPI tasks per node
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=16
 # Number of logical cores hosting OpenMP threads
 # Note that cpus per task is set as 2x OMP NUM THREADS
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 
 # Number and placement of OpenMP threads
 export OMP_NUM_THREADS=8
