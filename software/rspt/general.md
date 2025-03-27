@@ -63,7 +63,7 @@ ml easybuild-user/4.9.1
 eb rspt-20231004-cpeGNU-23.12.eb --robot
 ```
 
-See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/contact/contact_support/-docs/software_development/easybuild/).
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
 
 ## Example input files, and RPSTmake.inc file.
 
