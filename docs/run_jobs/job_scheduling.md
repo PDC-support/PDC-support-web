@@ -1,13 +1,13 @@
 
 # How to Run Jobs
 
-Many researchers run their program on PDC’s computer systems, often simultaneously. For this, the computer systems need a workload management and job scheduling. For job scheduling PDC uses [Slurm Workload Manager](https://slurm.schedmd.com/) .
+Many researchers run their program on PDC’s computer systems, often simultaneously. For this, the computer systems need workload management and job scheduling. For job scheduling PDC uses [Slurm Workload Manager](https://slurm.schedmd.com/) .
 
-When you login to the supercomputer with ssh, you will login to a designated **login node** in your *Klemming home directory*. Here you can modify your scripts and manage your files.
+When you login to the supercomputer with ssh, you login to a designated **login node** in your *Klemming home directory*. Here you can modify your scripts and manage your files.
 
 ![image](https://pdc-web.eecs.kth.se/files/support/images/LoginNodeWarning.PNG)
 
-To run your script/program on the computer nodes, you can do it in one of the following ways.
+To run your script/program on the computer nodes, you either write a [job script](job_scripts.md) describing what resources you need and submit this using the `sbatch` command as described [here](queueing_jobs), or run the script/program interactively as described [here](run_interactively).
 
 ## How jobs are scheduled
 
@@ -26,16 +26,7 @@ given high priority, and vice versa.
 
 ### Backfill
 
-As well as having a main queue to ensure that the systems are as full as
-possible, the job scheduling system also implements “backfill”. If the next
-job in the queue is large (that is, it will need lots of nodes to run), the
-scheduler collects nodes as they become free until there are enough to start
-running the large job. Backfill means that the scheduler looks for smaller
-jobs that could start on nodes that are free now, and which would finish
-before there are enough nodes free for the large job to start. For backfill
-to work well, the scheduler needs to know how long jobs will take. So, to
-take advantage of the possibility of backfill, you should set the maximum
-time your job needs to run as accurately as possible in your submit scripts.
+As well as having a main queue to ensure that the systems are as full as possible, the job scheduling system also implements “backfill”. If the next job in the queue is large (i.e., it requires a significant number of nodes to run), the scheduler accumulates nodes as they become available until there are enough to start running the large job. Backfill means that the scheduler looks for smaller jobs that could start on nodes that are free now, and which would finish before there are enough nodes free for the large job to start. For backfill to work well, the scheduler needs to know how long jobs will take. So, to take advantage of the possibility of backfill, you should set the maximum time your job needs to run as accurately as possible in your submit scripts.
 
 This graph shows the percentage of the nodes on Beskow (previous PDC’s supercomputer)
 that were in use on different dates from early 2015 till late 2016. You can see how
@@ -49,20 +40,22 @@ all the time.
 
 ### Example of scheduling
 
-Of course both Anna and Björn would like their jobs to be run as soon as
-possible.
+Consider a couple of researchers, Anna and Björn with projects A and
+B. Of course both Anna and Björn would like their jobs to be run as
+soon as possible.
 
-However, in the current situation, the scheduler will give priority to Björn’s
-job as his project (B) has not used as much of its time allocation recently as
-project A has used of their allocation.
+Assume now that project B has used less of its time allocation than
+project A. In this case, the scheduler will give priority to Björn’s
+job.
 
-The fact that Anna has not used any time herself does not make any difference
-as it is the total amount of time recently used by each project that is taken
-into consideration when deciding which job will be scheduled next.
+Even if Anna has not used any time herself, this does not make any
+difference as it is the total amount of time recently used by each
+project that is taken into consideration when deciding which job will
+be scheduled next.
 
 ## Dardel compute nodes
 
-Compute nodes on Dardel have 5 different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software, therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 128 physical cores per node.
+Compute nodes on Dardel have five different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software. Therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 128 physical cores per node.
 
 | Node type   |   Node count | RAM    | Partition          | Available   | Example used flag   |
 |-------------|--------------|--------|--------------------|-------------|---------------------|
@@ -91,7 +84,7 @@ In the above example, even if the job is allocated a node with 1 TB of memory, i
 
 ## Dardel partitions
 
-The compute nodes on Dardel are divided into four partitions. Each job must specify one of these partitions using the `-p` flag. The table below explains the difference between the partitions. See the table above for descriptions of the various node types.
+The compute nodes on Dardel are divided into five partitions. Each job must specify one of these partitions using the `-p` flag. The table below explains the difference between the partitions. See the table above for descriptions of the various node types.
 
 | Partition name   | Characteristics                                                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -103,7 +96,7 @@ The compute nodes on Dardel are divided into four partitions. Each job must spec
 
 ## How to run on shared partitions
 
-Running on shared partition is a little bit different than running on exclusive nodes.
+Running on the shared partition is a little bit different than running on exclusive nodes.
 First you need to specify the number of cores you will be using, and, at the same time, you get
 an equivalent size of RAM for your job.
 
