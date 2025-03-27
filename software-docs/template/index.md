@@ -4,7 +4,7 @@
 ## Requesting new software
 If you want to use software that is not currently installed, then you
 can either install it yourself by following the instructions on this page or our support pages,
-or contact <a href="https://support.pdc.kth.se/doc/support/?section=/doc/support-docs/contact/contact_support/" 
+or contact <a href="https://support.pdc.kth.se/doc/contact/contact_support/?section=/doc/support-docs/contact/contact_support/" 
 target="_top" title="Get help from PDC support">PDC Support</a>
 
 ## Disclaimer
