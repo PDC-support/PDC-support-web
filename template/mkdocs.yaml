@@ -36,6 +36,7 @@ nav:
     - How to configure kerberos and SSH: login/configuration.md 
     - How to reset your password: login/reset_password.md
     - Interactive HPC at PDC: login/interactive_hpc.md
+    - Mounting Dardel directories on your computer: login/mounting.md
   - How to Run Jobs: 
     - How to Run Jobs: run_jobs/job_scheduling.md
     - How to submit jobs: run_jobs/queueing_jobs.md

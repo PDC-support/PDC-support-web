@@ -70,6 +70,7 @@
     * [Graphical application on Dardel](login/interactive_hpc.md#graphical-application-on-dardel)
     * [Launching Jupyter Lab and Jupyter Notebook](login/interactive_hpc.md#launching-jupyter-lab-and-jupyter-notebook)
     * [Disconnect or Logout](login/interactive_hpc.md#disconnect-or-logout)
+	* [Mounting Dardel directories on your computer](login/mounting.md)
 
 # How to Run Jobs
 
