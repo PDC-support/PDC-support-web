@@ -7,6 +7,8 @@ theme:
     code: 'Fira Code'
 extra_css:
   - static/css/styles.css
+extra_javascript:
+  - static/js/custom.js
 markdown_extensions:
   - pymdownx.superfences
   - admonition
