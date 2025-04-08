@@ -94,7 +94,7 @@ module load vasp/6.4.2-vanilla
 
 export OMP_NUM_THREADS=1
 
-srun vasp
+srun --hint=nomultithread vasp
 ```
 Since OpenMP is supported by this module, you can also submit a job
 requesting 64 MPI processes per node and 2 OpenMP threads per MPI
@@ -116,7 +116,7 @@ see [SLURM documentation](https://slurm.schedmd.com/srun.html).
 
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=64
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=2
 
 module load PDC/23.12
 module load vasp/6.4.2-vanilla
@@ -126,5 +126,5 @@ export OMP_PLACES=cores
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
-srun vasp
+srun --hint=nomultithread vasp
 ```
