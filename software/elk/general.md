@@ -38,21 +38,19 @@ Sample job script to queue an Elk job with 16 MPI ranks, and 8 openMP threads
 # Number of nodes
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 
 ml PDC/23.12
 ml elk/10.0.15-cpeGNU-23.12
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=8
-export OMP_PLACES=cores
-export OMP_PROC_BIND=false
 export OMP_STACKSIZE=256M
 ulimit -Ss unlimited
 
 echo "Script initiated at `date` on `hostname`"
 
-srun -n 16 elk > out.log
+srun --hint=nomultithread -n 16 elk > out.log
 
 echo "Script finished at `date` on `hostname`"
 ```
