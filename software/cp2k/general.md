@@ -25,16 +25,15 @@ You need to replace *pdc.staff* with an active project that you belong to.
 #SBATCH -t 1-00:00:00
 
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 
 ml PDC/<version>
 ml cp2k/2024.3-cpeGNU-23.12
 
 export OMP_NUM_THREADS=8
-export OMP_PLACES=cores
 
-srun cp2k.psmp -i inputfile.inp -o logfile.log
+srun --hint=nomultithread cp2k.psmp -i inputfile.inp -o logfile.log
 ```
 
 Assuming the script is named jobscriptCP2K.sh, it can be submitted using
@@ -61,7 +60,7 @@ the optimal setting for running on 8 nodes on Dardel is
 #SBATCH -t 01:00:00
 
 #SBATCH --nodes=8
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 
 ml PDC/23.12
@@ -69,9 +68,8 @@ ml cp2k/2024.3-cpeGNU-23.12
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=8
-export OMP_PLACES=cores
 
-srun cp2k.psmp -i inputfile.inp -o logfile.log
+srun --hint=nomultithread cp2k.psmp -i inputfile.inp -o logfile.log
 ```
 
 For using CP2K together with PLUMED, we suggest to use 128 MPI ranks and 1 thread per node
@@ -93,9 +91,8 @@ ml cp2k/2024.3-cpeGNU-23.12
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=1
-export OMP_PLACES=cores
 
-srun cp2k.psmp -i inputfile.inp -o logfile.log
+srun --hint=nomultithread cp2k.psmp -i inputfile.inp -o logfile.log
 ```
 
 The executables for Dardel GPU nodes have been built with backend for AMD GPUs, with linking to GPU builds of the libraries COSMA, SpFFT, and SPLA.
