@@ -51,7 +51,7 @@ command! Here is an example script that requests 2 nodes:
 #!/bin/bash
 
 #SBATCH -J my_gmx_job
-#SBATCH -A snicYYYY-X-XX
+#SBATCH -A naissYYYY-X-XX
 #SBATCH -p main
 #SBATCH -t 01:00:00
 
