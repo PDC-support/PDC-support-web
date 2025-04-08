@@ -25,8 +25,8 @@ You need to replace *pdc.staff* with an active project that you belong to.
 #SBATCH -t 1-00:00:00
 
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=16
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=8
 
 ml PDC/<version>
 ml cp2k/2024.3-cpeGNU-23.12
@@ -60,8 +60,8 @@ the optimal setting for running on 8 nodes on Dardel is
 #SBATCH -t 01:00:00
 
 #SBATCH --nodes=8
-#SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=16
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=8
 
 ml PDC/23.12
 ml cp2k/2024.3-cpeGNU-23.12
