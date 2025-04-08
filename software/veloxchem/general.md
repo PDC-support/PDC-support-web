@@ -20,14 +20,13 @@ Here is an example of a job script
 
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=16
 
 module load PDC/23.12
 module load veloxchem/1.0rc3
 
 export OMP_NUM_THREADS=16
-export OMP_PLACES=cores
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
-srun vlx myjob.inp myjob.out
+srun --hint=nomultithread vlx myjob.inp myjob.out
 ```
