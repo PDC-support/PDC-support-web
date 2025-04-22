@@ -7,7 +7,7 @@ When you login to the supercomputer with ssh, you login to a designated **login 
 
 ![image](https://pdc-web.eecs.kth.se/files/support/images/LoginNodeWarning.PNG)
 
-To run your script/program on the computer nodes, you either write a [job script](job_scripts.md) describing what resources you need and submit this using the `sbatch` command as described [here](queueing_jobs), or run the script/program interactively as described [here](run_interactively).
+To run your script/program on the computer nodes, you either write a [job script](job_scripts.md) describing what resources you need and submit this using the `sbatch` command as described [here](queueing_jobs.md), or run the script/program interactively as described [here](run_interactively.md).
 
 ## How jobs are scheduled
 

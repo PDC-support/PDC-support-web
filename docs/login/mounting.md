@@ -1,13 +1,13 @@
 
 # How to mount a Dardel directory on your local computer
 
-`sshfs' is a userspace filesystem which mounts a remote directory in the local filesystem using the ssh protocol.
+`sshfs` is a userspace filesystem which mounts a remote directory in the local filesystem using the ssh protocol.
 
 ## sshfs on Linux
 
 ### Installing sshfs
 
-To install `sshfs' using apt-get, do
+To install `sshfs` using apt-get, do
 
 ```default
 sudo apt-get install sshfs
@@ -18,7 +18,7 @@ sudo apt-get install sshfs
 Assume that Anna with Dardel user name anna wants to mount her Dardel
 scratch directory on her local Linux machine. She would then:
 
-1. Obtain kerberos tickets as described [here](kerberos_login).
+1. Obtain kerberos tickets as described [here](kerberos_login.md).
 2. Create a local directory using
 ```
 mkdir dardel-scratch
