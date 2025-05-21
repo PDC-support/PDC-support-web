@@ -1,10 +1,71 @@
 
 # File transfer
 
-## Using scp rsync
+## Using rsync
 
+### Using rsync from Ubuntu Linux 
 
-### Using scp rsync from Ubuntu Linux 
+rsync copies files between hosts on a network.
+It uses SSH for data transfer, and uses the same authentication and provides the same security as `ssh`. Before using `rsync`,
+make sure you have a working SSH setup on your local machine.
+More information on `rsync` at https://linux.die.net/man/1/rsync
+
+#### Transferring from your local machine to PDC
+
+Standing in a directory on your local computer containing the file `localfile`.
+
+```default
+rsync <localfile> <username>@dardel.pdc.kth.se:<path>
+```
+
+where `username` is your username at PDC and `path` is the path on klemming. You can copy it to the `Private`
+directory on your PDC home directory using `~`. Example: ~/Private/ or /cfs/klemming/projects/supr/<projectname>
+For more information about what nodes to use see [Nodes for file operations](data_management.md#nodes-for-file-operations)
+
+!!! note
+
+    Do not use `rsync -a`
+    When transferring directly to a project directory or the scratch area, please do not use the `-a` flag of the `rsync` command. Doing so will incorrectly set the group of the transferred files so that they will be accounted to you personal quota, rather than the project/scratch quota. 
+
+!!! note
+
+    In most cases it is sufficient to use `rsync -r` to transfer a directory.
+
+#### Transferring from PDC to your local machine
+
+Standing in a directory on your local computer whereto you want to copy the file pdcfile from
+`/cfs/klemming/home/<1st letter username>/<username>/` you can transfer it using the command:
+
+```default
+rsync <username>@dardel.pdc.kth.se:/cfs/klemming/scratch/<1st letter username>/<username>/<pdcfile> .
+```
+
+where `username` is your username at PDC.
+
+!!! note 
+
+    If your `.bashrc` or other shell configuration files produce **ANY** output, then `scp` can fail.
+    You can test this with the command below. If the command produces output,
+    then you need to fix your shell configuration files so that they do not produce output.
+
+    ```default
+    ssh <username>@dardel.pdc.kth.se /bin/true
+    ```
+
+For more information about what nodes to use see [Nodes for file operations](data_management.md#nodes-for-file-operations)
+
+### Interrupted transfer
+
+The benefit of user ´rsync´ is that the command has added functionality in case of interrupted transfers.
+The following command resumes transfer by appending only missing data and see to it that incomplete files are kept.
+
+```default
+rsync --partial --append-verify <localfile> <username>@dardel.pdc.kth.se:<path>
+```
+
+## Using scp
+
+### Using scp from Ubuntu Linux 
 
 SCP: (secure copy) copies files between hosts on a network.
 It uses SSH for data transfer, and uses the same authentication and provides the same security as `ssh`. Before using `scp`,
@@ -12,20 +73,19 @@ make sure you have a working SSH setup on your local machine.
 
 #### Transferring from your local machine to PDC
 
-Standing in a directory on your local computer containing the file `localfile`, you can copy it to the `Private`
-directory on your PDC home directory `~` using the command:
+Standing in a directory on your local computer containing the file `localfile`.
 
 ```default
-scp <localfile> <username>@dardel.pdc.kth.se:~/Private/
+scp <localfile> <username>@dardel.pdc.kth.se:<path>
 ```
 
-where `username` is your username at PDC.
+where `username` is your username at PDC and `path` is the path on klemming. You can copy it to the `Private`
+directory on your PDC home directory using `~`. Example: ~/Private/ or /cfs/klemming/projects/supr/<projectname>
 For more information about what nodes to use see [Nodes for file operations](data_management.md#nodes-for-file-operations)
 
 !!! note
 
-    Do not use `rsync -a`
-    When transferring directly to a project directory or the scratch area, please do not use the `-a` flag of the `rsync` command. Doing so will incorrectly set the group of the transferred files so that they will be accounted to you personal quota, rather than the project/scratch quota. In most cases it is sufficient to use `rsync -r` to transfer a directory.
+    In most cases it is sufficient to use `scp -r` to transfer a directory.
 
 #### Transferring from PDC to your local machine
 

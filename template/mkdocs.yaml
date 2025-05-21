@@ -50,7 +50,7 @@ nav:
     - Data Management: data_management/data_management.md
     - Klemming: data_management/klemming.md
     - Swestore: data_management/file_transfer_swestore-dcache.md
-    - File transfer: data_management/file_transfer_scp.md
+    - File transfer: data_management/file_transfer.md
     - KTH OneDrive(rclone): data_management/rclone_onedrive.md
   - Software Development: 
     - Compilers and libraries: software_development/development.md

@@ -35,16 +35,16 @@ For more details on storage, see [Storage areas](../data_management/klemming.md)
 
 ## Transfer of files
 
-Files and directories can be transferred to and from Dardel with the scp (secure copy) command.
+Files and directories can be transferred to and from Dardel with the rsync or scp command.
 
 ```text
 # To transfer a file from local computer to Dardel
-scp localfile <user name>@dardel.pdc.kth.se:<directory>/.
+rsync localfile <user name>@dardel.pdc.kth.se:<directory>/.
 # To transfer a file from Dardel to local computer
 scp <user name>@dardel.pdc.kth.se:<directory>/<file> .
 ```
 
-For more details on how to transfer files, see [Using scp/rsync](../data_management/file_transfer_scp.md).
+For more details on how to transfer files, see [Using rsync/scp](../data_management/file_transfer.md).
 
 ## The Lmod module system
 

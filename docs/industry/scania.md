@@ -48,13 +48,13 @@ Read more information on how to login with [How to log in with kerberos](../logi
 
 ## File transfer
 
-Files are transferred with scp from PDC to Scania as follows:
+Files are transferred with rsync or scp from PDC to Scania as follows:
 
 ```default
-scp <username>@dardel-scania.pdc.kth.se:<filename> .
+rsync <username>@dardel-scania.pdc.kth.se:<filename> .
 ```
 
-Read more information about [Using scp/rsync](../data_management/file_transfer_scp.md#using-scp-rsync)
+Read more information about [Using rsync/scp](../data_management/file_transfer.md)
 
 ## Storage
 

@@ -117,10 +117,10 @@ $ scancel <job-ID>
 
 ## File transfer
 
-Files are transferred with scp from PDC to your local machine as follows:
+Files are transferred with rsync or scp from PDC to your local machine as follows:
 
 ```default
-$ scp <username>@dardel.pdc.kth.se:<filename> .
+$ rsync <username>@dardel.pdc.kth.se:<filename> .
 ```
 
 or the other way by:
@@ -129,7 +129,7 @@ or the other way by:
 $ scp <filename> <username>@dardel.pdc.kth.se:~/
 ```
 
-Here is more information on [Using scp/rsync](../data_management/file_transfer_scp.md)
+Here is more information on [Using rsync/scp](../data_management/file_transfer.md)
 
 ## Lab exercises
 

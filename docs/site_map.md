@@ -105,7 +105,7 @@
     * [Swestore](data_management/file_transfer_swestore-dcache.md)
         * [Swestore-dCache access from PDC transfer node](data_management/file_transfer_swestore-dcache.md#swestore-dcache-access-from-pdc-transfer-node)
         * [Security considerations when using rclone](data_management/file_transfer_swestore-dcache.md#security-considerations-when-using-rclone)
-    * [File transfer](data_management/file_transfer_scp.md)
+    * [File transfer](data_management/file_transfer.md)
         * [Some important consideration before using Swestore](data_management/file_transfer_swestore-dcache.md)
         * [Swestore-dCache access from PDC transfer node](data_management/file_transfer_swestore-dcache.md#swestore-dcache-access-from-pdc-transfer-node)
         * [Security considerations when using rclone](data_management/file_transfer_swestore-dcache.md#security-considerations-when-using-rclone)
