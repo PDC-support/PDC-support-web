@@ -10,7 +10,7 @@ ml spider uppasd
 To load the 6.0.2 version of the program
 ```bash
 ml PDC/<version>
-ml uppasd/6.0.2-cpeGNU-23.12
+ml uppasd/6.0.2-cpeGNU-24.11
 ```
 The binary is ``sd``
 Examples are provided in ``$EBROOTUPPASD/examples``
@@ -29,7 +29,7 @@ Sample job script to queue an UppASD job with 16 openMP threads on cores on the 
 #SBATCH -c 16                 # Number of cpus per task
 
 ml PDC/<version>
-ml uppasd/6.0.2-cpeGNU-23.12
+ml uppasd/6.0.2-cpeGNU-24.11
 
 export OMP_NUM_THREADS=16
 
@@ -60,9 +60,9 @@ The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/
 A build in your local file space can be done with
 
 ```bash
-ml PDC/23.12
-ml easybuild-user/4.9.1
-eb uppasd-6.0.2-cpeGNU-23.12.eb --robot
+ml PDC/24.11
+ml easybuild-user/4.9.4
+eb uppasd-6.0.2-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).

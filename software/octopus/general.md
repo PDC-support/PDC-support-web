@@ -5,7 +5,7 @@ https://octopus-code.org/
 
 To use this module do
 ml PDC/<version>
-ml octopus/11.4-cpeGNU-22.06
+ml octopus/15.1-cpeGNU-24.11
 Below follows an example job script for Octopus.
 ```
 #!/bin/bash
@@ -28,7 +28,7 @@ Below follows an example job script for Octopus.
 #SBATCH --cpus-per-task=1
 
 ml PDC/<version>
-ml octopus/11.4-cpeGNU-22.06
+ml octopus/15.1-cpeGNU-24.11
 
 srun octopus inp > out.log
 ```

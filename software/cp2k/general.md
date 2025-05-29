@@ -6,12 +6,12 @@ The CP2K installation contained in this module was built with support for the pr
 To display info on which environment variables are set when loading the module, use
 ```
 ml PDC/<version>
-ml show cp2k/2024.3-cpeGNU-23.12
+ml show cp2k/2025.1-cpeGNU-24.11
 ```
 To load the CP2K module
 ```
 ml PDC/<version>
-ml cp2k/2024.3-cpeGNU-23.12
+ml cp2k/2025.1-cpeGNU-24.11
 ```
 Below follows an example job script for CP2K, for running on a single Dardel node using 16 MPI ranks and 8 threads.
 You need to replace *pdc.staff* with an active project that you belong to.
@@ -29,7 +29,7 @@ You need to replace *pdc.staff* with an active project that you belong to.
 #SBATCH --cpus-per-task=8
 
 ml PDC/<version>
-ml cp2k/2024.3-cpeGNU-23.12
+ml cp2k/2025.1-cpeGNU-24.11
 
 export OMP_NUM_THREADS=8
 
@@ -63,8 +63,8 @@ the optimal setting for running on 8 nodes on Dardel is
 #SBATCH --ntasks-per-node=16
 #SBATCH --cpus-per-task=8
 
-ml PDC/23.12
-ml cp2k/2024.3-cpeGNU-23.12
+ml PDC/24.11
+ml cp2k/2025.1-cpeGNU-24.11
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=8
@@ -86,8 +86,8 @@ For using CP2K together with PLUMED, we suggest to use 128 MPI ranks and 1 threa
 #SBATCH --ntasks-per-node=128
 #SBATCH --cpus-per-task=1
 
-ml PDC/23.12
-ml cp2k/2024.3-cpeGNU-23.12
+ml PDC/24.11
+ml cp2k/2025.1-cpeGNU-24.11
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=1
@@ -110,6 +110,31 @@ You need to replace *pdc.staff* with an active project that you belong to.
 **Note: This script is a simple template. For efficient calculation the script needs to
 be augmented with settings to pin appropriately the computation threads to the CCDs
 and GCD.**
+
+```
+#!/bin/bash
+
+#SBATCH -J cp2k-test
+#SBATCH -A pdc.staff
+#SBATCH -p gpu
+#SBATCH -t 02:00:00
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=16
+
+ml PDC/23.12
+ml cp2k/2024.3-cpeGNU-23.12-gpu
+
+export MPICH_GPU_SUPPORT_ENABLED=1
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+export OMP_NUM_THREADS=8
+export OMP_PLACES=cores
+
+# Add settings to pin threads to CCDs and GCDs
+
+srun cp2k.psmp -i inputfile.inp -o logfile.log
+```
 
 Assuming the script is named jobscriptCP2K.sh, it can be submitted using
 ```

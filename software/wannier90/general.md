@@ -10,4 +10,4 @@ ml wannier90/<version>-cpeGNU-<version>>
 ```
 
 Please consult the official Wannier90 documentation for more details
-http://www.wannier.org/
+https://www.wannier.org/

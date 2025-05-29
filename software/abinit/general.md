@@ -7,7 +7,7 @@ To use this module do
 
 ```
 ml PDC/<version>
-ml abinit/10.0.5-cpeGNU-23.12
+ml abinit/10.2.7-cpeGNU-24.11
 ```
 
 Below follows an example job script for ABINIT.
@@ -32,8 +32,8 @@ Below follows an example job script for ABINIT.
 # number of MPI processes per node
 #SBATCH --ntasks-per-node=128
 
-ml PDC/23.12
-ml abinit/10.0.5-cpeGNU-23.12
+ml PDC/24.11
+ml abinit/10.2.7-cpeGNU-24.11
 
 export ABI_PSPDIR=<pseudo potentials directory>
 
