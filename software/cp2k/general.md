@@ -97,6 +97,8 @@ srun --hint=nomultithread cp2k.psmp -i inputfile.inp -o logfile.log
 
 The executables for Dardel GPU nodes have been built with backend for AMD GPUs, with linking to GPU builds of the libraries COSMA, SpFFT, and SPLA.
 
+**Note: A build of CP2K under PDC/24.11 for Dardel GPU nodes is work in progress. The build contained in module *cp2k/2024.3-cpeGNU-23.12-gpu* was done for the earlier version 23.12 of the Cray Parallel Environment and is unfortunately not working on the system after recent upgrades of the operating system.**
+
 To load the CP2K module
 
 ```
