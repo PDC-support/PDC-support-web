@@ -1,4 +1,15 @@
 resources:
+  - resource: cpe24.11
+    versions:
+      - version: 6.5.1-vanilla
+      - version: 6.5.1-vanilla-xy
+      - version: 6.5.1-wannier90
+      - version: 6.4.3-vanilla
+      - version: 6.4.3-vanilla-xy
+      - version: 6.4.3-wannier90
+      - version: 5.4.4-vanilla
+      - version: 5.4.4-vanilla-xy
+      - version: 5.4.4-wannier90
   - resource: cpe23.12
     versions:
       - version: 6.3.2-wannier90

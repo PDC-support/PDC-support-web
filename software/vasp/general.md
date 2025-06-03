@@ -72,9 +72,9 @@ Full documentation on how to use [VASPsol documentation](https://github.com/henn
 - In the simplest case the only parameter that need to be set is the solvation flag LSOL = .TRUE.
 
 ## Potential files and vdW kernel
-Projector augmented wave (PAW) potentials can be found at ``/pdc/software/23.12/other/vasp/potpaw-64/``
+Projector augmented wave (PAW) potentials can be found at ``/pdc/software/24.11/other/vasp/potpaw-64/``
 
-To use one of the nonlocal vdW functionals one needs to put the file vdw_kernel.bindat into the run directory (along with INCAR, POSCAR, POTCAR and KPOINTS). This file can be found at ``/pdc/software/23.12/other/vasp/vdw_kernel/vdw_kernel.bindat``.
+To use one of the nonlocal vdW functionals one needs to put the file vdw_kernel.bindat into the run directory (along with INCAR, POSCAR, POTCAR and KPOINTS). This file can be found at ``/pdc/software/24.11/other/vasp/vdw_kernel/vdw_kernel.bindat``.
 
 ## Running Vasp
 Here is an example of a job script requesting 128 MPI processes per node:
@@ -89,8 +89,8 @@ Here is an example of a job script requesting 128 MPI processes per node:
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=128
 
-module load PDC/23.12
-module load vasp/6.4.2-vanilla
+module load PDC/24.11
+module load vasp/6.4.3-vanilla
 
 export OMP_NUM_THREADS=1
 
@@ -118,8 +118,8 @@ see [SLURM documentation](https://slurm.schedmd.com/srun.html).
 #SBATCH --ntasks-per-node=64
 #SBATCH --cpus-per-task=2
 
-module load PDC/23.12
-module load vasp/6.4.2-vanilla
+module load PDC/24.11
+module load vasp/6.4.3-vanilla
 
 export OMP_NUM_THREADS=2
 export OMP_PLACES=cores
