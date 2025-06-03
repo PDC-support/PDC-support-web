@@ -1,6 +1,12 @@
 
 # File transfer
 
+!!! note
+
+    All examples below are created if you want to transfer small amount of data in/out of *klemming*
+    In case you would like to transfer a large amount of data, please use the transfer node instead
+    `dardel-ftn01.pdc.kth.se/`
+
 ## Using rsync
 
 ### Using rsync from Ubuntu Linux 
