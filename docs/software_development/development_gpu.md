@@ -10,16 +10,16 @@ heterogeneous interface for portability (HIP), offloading to GPU with OpenMP dir
 the SYCL programming model.
 
 Programs on Dardel are installed using a specific Cray Parallel Environment (CPE). The main
-version of the Cray Parallel Environment on Dardel is currently 23.12 which can be loaded with
+version of the Cray Parallel Environment on Dardel is currently 24.11 which can be loaded with
 
 ```text
-ml PDC/23.12
+ml PDC/24.11
 ```
 
-To load the ROCm module version 5.7.0 and set the accelerator target to **amd-gfx90a** (AMD MI250X GPU)
+To load the ROCm module and set the accelerator target to **amd-gfx90a** (AMD MI250X GPU)
 
 ```text
-ml rocm/5.7.0
+ml rocm/6.3.3
 ml craype-accel-amd-gfx90a
 ```
 
@@ -51,13 +51,13 @@ program is built with the AMD hipcc compiler.
 wget https://raw.githubusercontent.com/PDC-support/introduction-to-pdc/master/example/hello_world_gpu.cpp
 
 # Load the ROCm module and set the accelerator target to amd gfx90a  AMD MI250X GPU 
-ml rocm/5.7.0
+ml rocm/6.3.3
 ml craype-accel-amd-gfx90a
 
 # We use the AMD hipcc compiler  Check the full path of the command hipcc
 which hipcc
 # returns
-/opt/rocm-5.7.0/bin/hipcc
+/opt/rocm-6.3.3/bin/hipcc
 
 # Compile the code on the login node
 hipcc --offload-arch=gfx90a hello_world_gpu.cpp -o hello_world_gpu.x
@@ -88,7 +88,7 @@ Environment.
 wget https://github.com/ENCCS/openmp-gpu/raw/main/content/exercise/ex04/solution/ex04.F90
 
 # Load the ROCm module and set the accelerator target to amd gfx90a  AMD MI250X GPU 
-ml rocm/5.7.0
+ml rocm/6.3.3
 ml craype-accel-amd-gfx90a
 
 # Check which compiler the compiler wrapper is pointing to
@@ -115,7 +115,7 @@ ssh nid002792
 # where nid002792 is one of the Dardel GPU nodes 
 
 # Load the rocm module
-ml rocm/5.7.0
+ml rocm/6.3.3
 
 # then run the program
 ./ex04.x

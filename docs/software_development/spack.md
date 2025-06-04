@@ -25,8 +25,8 @@ export SPACK_USER_PREFIX=<MyPath>
 To activate **spack-user**.
 
 ```default
-ml PDC/23.12
-ml spack-user/0.21.2
+ml PDC/24.11
+ml spack-user
 ```
 
 ## Finding and listing available software

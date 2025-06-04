@@ -21,7 +21,7 @@ into your home folder and will build software and modules into
  *~/.local/easybuild/* by default.
 If you would like to store your easybuild installation elsewhere please
 set its environment variable prior of loading the **easybuild-user** module.
-At this time this works only for easybuild/4.9.1 and PDC/23.12.
+At this time this works only for easybuild/4.9.1 and PDC/24.11.
 
 ```default
 export EB_USER_PREFIX=<MyPath>
@@ -30,8 +30,8 @@ export EB_USER_PREFIX=<MyPath>
 To activate **easybuild-user**.
 
 ```default
-ml PDC/23.12
-ml easybuild-user/4.9.1
+ml PDC/24.11
+ml easybuild-user
 ```
 
 ## How is EasyBuild configured
@@ -66,7 +66,7 @@ Performing a dry-run is a handy procedure for testing the installation
 of a software
 
 ```default
-eb boost-1.83.0-cpeGNU-23.12.eb --dry-run
+eb boost-1.87.0-cpeGNU-24.11.eb --dry-run
 ```
 
 You can also use  *-x,–extended-dry-run* for more information.
@@ -115,13 +115,13 @@ In many cases a specific installation has many dependencies.
 These dependencies can be automatically installed using easyconfigs that are available in robot paths
 
 ```default
-eb boost-1.83.0-cpeGNU-23.12.eb --robot
+eb boost-1.87.0-cpeGNU-24.11.eb --robot
 ```
 
 To check what dependencies are missing
 
 ```default
-eb boost-1.83.0-cpeGNU-23.12.eb --missing
+eb boost-1.87.0-cpeGNU-24.11.eb --missing
 ```
 
 ## How to build easyconfig files
@@ -179,7 +179,7 @@ parallelize your software
 In your **easyconfig** file you enter this information using the following command.
 
 ```default
-toolchain = {'name': 'cpeGNU', 'version': '23.12'}
+toolchain = {'name': 'cpeGNU', 'version': '24.11'}
 ```
 
 Remember that what toolchain should be used when building your software will

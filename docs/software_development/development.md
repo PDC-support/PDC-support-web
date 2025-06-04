@@ -8,11 +8,11 @@ The Cray Programming Environment (CPE) provides consistent interface to multiple
 On Dardel you can load the `cpe` module to enable a specific version of the CPE. For example
 
 ```text
-module load cpe/23.12
+module load cpe/24.11
 ```
 
 The `cpe` module will make sure that the corresponding versions of several other Cray libraries are loaded,
-such as `cray-libsci` and `cray-mpich`. You can check the details by `module show cpe/23.12`.
+such as `cray-libsci` and `cray-mpich`. You can check the details by `module show cpe/24.11`.
 
 In addition to the `cpe` module, there are also the `PrgEnv-` modules that provide compilers for
 different programming environment
@@ -195,20 +195,20 @@ cd fftw_test
 wget https://people.math.sc.edu/Burkardt/c_src/fftw/fftw_test.c
 
 # Change from the PrgEnv cray to the PrgEnv gnu environment
-ml PDC/23.12
-ml cpeGNU/23.12
-# Lmod is automatically replacing "cpeGNU 23 12" with "PrgEnv gnu 8 5 0" 
-# Lmod is automatically replacing "cce 17 0 0" with "gcc 12 3" 
-# Lmod is automatically replacing "PrgEnv cray 8 5 0" with "cpeGNU 23 12" 
+ml PDC/24.11
+ml cpeGNU/24.11
+# Lmod is automatically replacing "cpeGNU/24.11" with "PrgEnv-gnu/8.5.0" 
+# Lmod is automatically replacing "cce/17.0.0" with "gcc/12.3" 
+# Lmod is automatically replacing "PrgEnv cray 8 5 0" with "cpeGNU/24.11" 
 # Due to MODULEPATH changes  the following have been reloaded 
-# 1  cray libsci 23 12 5     2  cray mpich 8 1 28
+# 1  cray-libsci/24.11.0    2  cray-mpich/8.1.28
 
 # Check which compiler the cc compiler wrapper is pointing to
 cc --version
 gcc-12 (SUSE Linux) 12.3.0
 
 ml list
-# The listing reveals that cray libsci 23 02 1 1 is already loaded 
+# The listing reveals that cray-libsci/24.11.0 is already loaded 
 
 # In addition  the program needs linking also to a Fourier transform library 
 ml spider fftw
@@ -228,27 +228,27 @@ srun -n 1 ./fftw_test.x
 
 Having loaded the cray-fftw module, no additional linking flag(s) was needed for the **cc** compiler wrapper.
 
-**Example 3:** Build a program with the EasyBuild cpeGNU/23.12 toolchain
+**Example 3:** Build a program with the EasyBuild cpeGNU/24.11 toolchain
 
 ```text
 # Load an EasyBuild user module
-ml PDC/23.12
-ml easybuild-user/4.9.1
+ml PDC/24.11
+ml easybuild-user
 
 # Look for a recipe for the Libxc library
 eb -S Libxc
 # Returns a list of available EasyBuild easyconfig files 
-# Choose an easyconfig file for the cpeGNU 23 12 toolchain 
+# Choose an easyconfig file for the cpeGNU 24.11 toolchain 
 
 # Make a dry run
-eb libxc-6.2.2-cpeGNU-23.12.eb --robot --dry-run
+eb libxc-7.0.0-cpeGNU-24.11.eb --robot --dry-run
 
 # Check if dry run looks reasonable  Then proceed to build with
-eb libxc-6.2.2-cpeGNU-23.12.eb --robot
+eb libxc-7.0.0-cpeGNU-24.11.eb --robot
 
 # The program is now locally installed in the user s
 # ~  local easybuild directory and can be loaded with
-ml PDC/23.12
-ml easybuild-user/4.9.1
-ml libxc/6.2.2-cpeGNU-23.12
+ml PDC/24.11
+ml easybuild-user
+ml libxc-7.0.0-cpeGNU-24.11.eb
 ```

@@ -237,7 +237,7 @@ ml easybuild-user
 # Look for a recipe for the Libxc library
 eb -S libxc
 # Returns a list of available EasyBuild easyconfig files
-# Choose an easyconfig file for the cpeGNU 23 12 toolchain
+# Choose an easyconfig file for the cpeGNU/24.11 toolchain
 
 # Make a dry run
 eb libxc-7.0.0-cpeGNU-24.11.eb --robot --dry-run
