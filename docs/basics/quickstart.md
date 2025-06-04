@@ -90,7 +90,7 @@ The Cray Programming Environment (CPE) provides a consistent interface to multip
 On Dardel you can load the `cpe` module to enable a specific version of the CPE. For example
 
 ```text
-ml cpe/23.12
+ml cpe/24.11
 ```
 
 In addition to the `cpe` module, there are also the `PrgEnv-` modules that provide compilers for
@@ -194,20 +194,20 @@ cd fftw_test
 wget https://people.math.sc.edu/Burkardt/c_src/fftw/fftw_test.c
 
 # Change from the PrgEnv cray to the PrgEnv gnu environment
-ml PDC/23.12
-ml cpeGNU/23.12
-#Lmod is automatically replacing "cpeGNU/23.12" with "PrgEnv-gnu/8.5.0".
+ml PDC/24.11
+ml cpeGNU/24.11
+#Lmod is automatically replacing "cpeGNU/24.11" with "PrgEnv-gnu/8.5.0".
 #Lmod is automatically replacing "cce/17.0.0" with "gcc-native/12.3".
-#Lmod is automatically replacing "PrgEnv-cray/8.5.0" with "cpeGNU/23.12".
+#Lmod is automatically replacing "PrgEnv-cray/8.5.0" with "cpeGNU/24.11".
 #Due to MODULEPATH changes, the following have been reloaded:
-#  1) cray-libsci/23.12.5     2) cray-mpich/8.1.28
+#  1) cray-libsci/24.11.0     2) cray-mpich/8.1.28
 
 # Check which compiler the cc compiler wrapper is pointing to
 cc --version
 # gcc-12 (SUSE Linux) 12.3.0
 
 ml
-# The listing reveals that cray-libsci/23.12.5 is already loaded
+# The listing reveals that cray-libsci/24.11.0 is already loaded
 
 # In addition  the program needs linking also to a Fourier transform library
 ml spider fftw
@@ -231,8 +231,8 @@ Having loaded the cray-fftw module, no additional linking flag(s) was needed for
 
 ```text
 # Load an EasyBuild user module
-ml PDC/23.12
-ml easybuild-user/4.9.1
+ml PDC/24.11
+ml easybuild-user
 
 # Look for a recipe for the Libxc library
 eb -S libxc
@@ -240,16 +240,16 @@ eb -S libxc
 # Choose an easyconfig file for the cpeGNU 23 12 toolchain
 
 # Make a dry run
-eb libxc-6.2.2-cpeGNU-23.12.eb --robot --dry-run
+eb libxc-7.0.0-cpeGNU-24.11.eb --robot --dry-run
 
 # Check if dry run looks reasonable  Then proceed to build with
-eb libxc-6.2.2-cpeGNU-23.12.eb --robot
+eb libxc-7.0.0-cpeGNU-24.11.eb --robot
 
 # The program is now locally installed in the user's
 # ~/.local/easybuild directory and can be loaded with
-ml PDC/23.12
-ml easybuild-user/4.9.1
-ml libxc/6.2.2-cpeGNU-23.12
+ml PDC/24.11
+ml easybuild-user
+ml libxc/7.0.0-cpeGNU-24.11
 ```
 
 ## How to use EasyBuild
@@ -259,8 +259,8 @@ several **easyconfig** software recipes are available via the command line.
 In order to use EasyBuild in your local folder
 
 ```text
-ml PDC/23.12
-ml easybuild-user/4.9.1
+ml PDC/24.11
+ml easybuild-user
 ```
 
 EasyBuild installed software will build into  *~/.local/easybuild* folder and
@@ -341,16 +341,16 @@ The example calculation is a density functional theory (DFT) simulation of the p
 We activate the ABINIT software module with
 
 ```text
-ml PDC/23.12
-ml abinit/9.10.3-cpeGNU-23.12
+ml PDC/24.11
+ml abinit/10.2.7-cpeGNU-24.11
 ```
 
 In order to learn more about what environment variables were set by the *ml* command
 
 ```text
-ml show abinit/9.10.3-cpeGNU-23.12
+ml show abinit/10.2.7-cpeGNU-24.11
 # which reveals that
-# /pdc/software/23.12/eb/software/abinit/9.10.3-cpeGNU-23.12/bin
+# /pdc/software/24.11/eb/software/abinit/10.2.7-cpeGNU-24.11/bin
 # was appended to the PATH
 ```
 
@@ -389,8 +389,8 @@ should be the path to the pseudopotentials.
 # number of MPI processes per node
 #SBATCH --ntasks-per-node=128
 
-ml PDC/23.12
-ml abinit/9.10.3-cpeGNU-23.12
+ml PDC/24.11
+ml abinit/10.2.7-cpeGNU-24.11
 
 export ABI_PSPDIR=<Psps_for_tests>
 
