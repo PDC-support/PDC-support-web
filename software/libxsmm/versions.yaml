@@ -10,3 +10,6 @@ resources:
     versions:
       - version: 1.16.2
       - version: 1.17
+  - resource: cpe22.06
+    versions:
+      - version: 1.17

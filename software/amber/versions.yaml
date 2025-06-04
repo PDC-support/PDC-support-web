@@ -28,3 +28,6 @@ resources:
     versions:
       - version: 22
       - version: 24
+  - resource: cpe24.11
+    versions:
+      - version: 24

@@ -5,3 +5,6 @@ resources:
   - resource: cpe23.12.gpu
     versions:
       - version: 2.4.0
+  - resource: cpe24.11
+    versions:
+      - version: 2.4.1

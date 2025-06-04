@@ -5,3 +5,7 @@ resources:
   - resource: crayos5
     versions:
       - version: 1.4.4
+  - resource: cpe24.11
+    versions:
+      - version: 2.4.0
+      

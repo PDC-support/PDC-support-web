@@ -8,3 +8,6 @@ resources:
   - resource: cpe22.06
     versions:
       - version: 6.2.1-cpeGNU-21.11
+  - resource: cpe24.11
+    versions:
+      - version: 6.3.0

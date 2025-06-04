@@ -8,3 +8,6 @@ resources:
   - resource: cpe22.06
     versions:
       - version: 2.6.0
+  - resource: cpe24.11
+    versions:
+      - version: 2.6.0

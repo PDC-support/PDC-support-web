@@ -5,3 +5,6 @@ resources:
   - resource: cpe22.06
     versions:
       - version: 220621
+  - resource: cpe24.11
+    versions:
+      - version: 220621

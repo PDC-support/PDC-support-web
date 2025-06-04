@@ -9,3 +9,6 @@ resources:
   - resource: cpe22.06
     versions:
       - version: 4.0.3
+  - resource: cpe24.11
+    versions:
+      - version: 4.0.3

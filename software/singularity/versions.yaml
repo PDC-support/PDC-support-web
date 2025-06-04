@@ -11,3 +11,6 @@ resources:
   - resource: cpe22.06
     versions:
       - version: 3.10.4
+  - resource: cpe24.11
+    versions:
+      - version: 4.2.0
