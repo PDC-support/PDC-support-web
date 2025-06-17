@@ -99,9 +99,7 @@ srun --hint=nomultithread vasp
 Since OpenMP is supported by this module, you can also submit a job
 requesting 64 MPI processes per node and 2 OpenMP threads per MPI
 process, using the job script below. Please note that in this case
-you need to specify ``--cpus-per-task``, ``OMP_NUM_THREADS``, and ``OMP_PLACES``,
-and that the value of ``--cpus-per-task`` is equal to 2x ``OMP_NUM_THREADS``,
-becasue AMD's simultaneous multithreading (SMT) is enabled.
+you need to specify ``--cpus-per-task``, ``OMP_NUM_THREADS``, and ``OMP_PLACES``.
 
 Please also note that it is necessary set the ``SRUN_CPUS_PER_TASK``
 environment variable in the job script so that ``srun`` can work as expected,
