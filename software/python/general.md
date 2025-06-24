@@ -50,8 +50,6 @@ $ source activate base
 The base environment will be activated, as indicated by ``(base)`` in front of your
 bash prompt.
 
-```
-
 !!! Attention
 
     Running the standard command ``conda activate`` would require a separate initialization of conda first, while ``source activate`` takes care of the initialization step itself.
