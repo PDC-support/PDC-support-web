@@ -42,39 +42,19 @@ modules or environments, either contact PDC support or follow one of the options
 
 ## Activating the base environment
 Loading the module does not automatically activate the "base" environment.
-To activate the base environment, you can create a script that contains the following
-lines
+To activate the base environment, simply run:
 
-If you save this script as ``conda.init.sh`` and then :
 ```
-$ source conda.init.sh
+$ source activate base
 ```
 The base environment will be activated, as indicated by ``(base)`` in front of your
 bash prompt.
-
-A sample ``conda.init.sh`` file can be found below:
-
-```
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('//pdc/software/23.12/eb/software/miniconda3/24.7.1-0-cpeGNU-23.12/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/pdc/software/23.12/eb/software/miniconda3/24.7.1-0-cpeGNU-23.12/etc/profile.d/conda.sh" ]; then
-        . "/pdc/software/23.12/eb/software/miniconda3/24.7.1-0-cpeGNU-23.12/etc/profile.d/conda.sh"
-    else
-        export PATH="/pdc/software/23.12/eb/software/miniconda3/24.7.1-0-cpeGNU-23.12/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 ```
 
 !!! Attention
 
-    If the version of the PDC module or the miniconda3 are changed, please update the conda.init.sh file accordingly.
+    Running the standard command ``conda activate`` would require a separate initialization of conda first, while ``source activate`` takes care of the initialization step itself.
 
 ## Creating your own Python environment
 If you create your own conda environment you would have full control and
@@ -83,9 +63,8 @@ you can create a conda environment under your Klemming folder:
 ```
 ml PDC/<version>
 ml miniconda3/24.7.1-0-cpeGNU-23.12
-source conda.init.sh
 conda create --name my-conda-env
-conda activate my-conda-env
+source activate my-conda-env
 conda install <package-name>
 ```
 Please note that by default the conda environment will be stored in the
@@ -121,6 +100,7 @@ the srun command:
 $ salloc -A <your-project-ID> -t 1:0:0 -n 1 -p shared
 $ ml PDC/<version>
 $ ml miniconda3/24.7.1-0-cpeGNU-23.12
+$ source activate my-conda-env
 $ srun -n 1 python some_script.py
 ```
 ```
@@ -142,11 +122,11 @@ $ srun -n 1 python some_script.py
 ml PDC/<version>
 ml miniconda3/24.7.1-0-cpeGNU-23.12
 # if you need the custom conda environment:
-conda activate my-conda-env
+source activate my-conda-env
 # execute the program
 srun -n 1 python some_script.py
 # to deactivate the Miniconda environment
-conda deactivate
+source deactivate
 ```
 
 ## How to use
@@ -161,7 +141,7 @@ After loading an Miniconda module, there are information on how to use the Minic
 *JUST LOADING THIS MODULE DOES *NOT* CHANGE THE PYTHON VERSION, NOR ENABLES
 ANY EXTRA PYTHON MODULES. This module makes available the 'conda' command, with which users can create named Miniconda environments and then activate them.
 To create and use a customized environment use 'conda create ...' and
-then 'conda activate ...' (see example below)*.
+then 'source activate ...' (see example below)*.
 
 ## Create your own environment
 We recommend that you create a ``~/.condarc`` file with the following lines:
@@ -182,8 +162,8 @@ $ conda create --prefix /cfs/klemming/<project>/username/conda-dirs/envs/my-cond
 Notice that replace ``<project>`` by your project direction and ``username`` by your username as that in the ``~/.condarc``.
 After the environment is created you can activate it by:
 ```
-$ conda activate my-conda-env
+$ source activate my-conda-env
 (my-conda-env)$ python ...
 ```
-To deactivate your environment or the base environment, use ``conda deactivate``.
+To deactivate your environment or the base environment, use ``source deactivate`` or ``conda deactivate``.
 
