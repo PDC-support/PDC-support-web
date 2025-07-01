@@ -13,7 +13,7 @@ Follow links to find information about [Dardel compute nodes](job_scheduling.md#
 Below is a job script example for a pure MPI job. For PDC-installed programs, you can find examples in the [software page](https://support.pdc.kth.se/doc/applications/).
 
 ```text
-#! bin bash -l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
@@ -45,7 +45,7 @@ srun ./myexe > my_output_file
 Below is another example for a hybrid MPI+OpenMP program. This example will place 16 MPI processes with 8 threads each on each compute node. The *--hint=nomultithread* option for *srun* is to ensure correct placement of OpenMP threads.
 
 ```text
-#! bin bash  l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
@@ -90,7 +90,7 @@ same number of nodes and take roughly the same time to complete.
 For more information see [Job arrays](job_arrays.md#job-arrays).
 
 ```text
-#! bin bash -l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
@@ -113,7 +113,7 @@ For more information see [Job arrays](job_arrays.md#job-arrays).
 #SBATCH --ntasks-per-node=128
 
 # Indices of individual jobs in the job array
-#SBATCH  a 0 99
+#SBATCH --array=0-99
 
 # Fetch one directory from the array based on the task ID
 # Note  index starts from 0
@@ -135,7 +135,7 @@ Please note that the `shared` partition is used, since this job cannot saturate
 a single node on Dardel.
 
 ```text
-#! bin bash -l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
@@ -152,7 +152,7 @@ a single node on Dardel.
 #SBATCH -n 10
 
 # The number of tasks for each node requested
-#SBATCH --ntasks-per-node 2
+#SBATCH --ntasks-per-node=2
 
 # 10 hours wall clock time will be given to this job
 #SBATCH -t 10:00:00
@@ -169,7 +169,7 @@ Please note that the `shared` partition is used, since this job cannot saturate
 a single node on Dardel.
 
 ```text
-#! bin bash -l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
@@ -214,7 +214,7 @@ srun: error: Unable to create step for job <JOBID>: More processors requested th
 Below is a job script example for a job running on a Dardel GPU node.
 
 ```text
-#! bin bash -l
+#!/bin/bash -l
 # The -l above is required to get the full environment with modules
 
 # Set the allocation to be charged for this job
