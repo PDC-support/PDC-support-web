@@ -8,7 +8,7 @@ You can find documentation on our clusters at [https://www.pdc.kth.se/hpc-servic
 
 ## How to log in
 
-In order to be able to login into PDC system, you need a PDC account linked with your [SUPR](https://supr.naiss.se/) account.
+In order to be able to login into PDC system, you need a PDC account linked with your [SUPR](https://supr.naiss.se/) account. If you do not have any account, please read out documentation on how to get a [PDC account via SUPR](../getting_access/get_access.md#apply-via-a-supr-account)
 
 1. First follow the instructions on how to generate an SSH key pair, see [Generating SSH keys](../login/ssh_keys.md).
 1. Goto [PDC login portal](https://loginportal.pdc.kth.se/) and follow instructions.
