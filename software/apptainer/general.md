@@ -328,21 +328,21 @@ In case you would like to run on one node you do not need MPI support
 in your image and you can send in a job using…
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
-#SBATCH   nodes=1
+#SBATCH --nodes=1
 # Using the shared partition as we are not using all cores
-#SBATCH  p shared
+#SBATCH -p shared
 # Number of MPI processes per node
-#SBATCH   ntasks per node=24
+#SBATCH --ntasks per node=24
 # Run the executable named myexe
 ml PDC/<version> apptainer
 srun -n 24 apptainer exec -B /cfs/klemming <sandbox folder> <myexe>
@@ -354,21 +354,21 @@ In case you need to parallelize your software across nodes you should use one of
 recipes with Cray MPI support mentioned earlier which do reside in the [https://github.com/PDC-support/PDC-SoftwareStack](https://github.com/PDC-support/PDC-SoftwareStack)
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
-#SBATCH   nodes=2
+#SBATCH --nodes=2
 # Using the shared partition as we are not using all cores
-#SBATCH  p shared
+#SBATCH -p shared
 # Number of MPI processes per node
-#SBATCH   ntasks per node=12
+#SBATCH --ntasks per node=12
 # Run the executable named myexe
 ml PDC/<version> apptainer
 srun -n 24 --mpi=pmi2 apptainer exec -B /cfs/klemming <sandbox folder> <myexe>
@@ -383,19 +383,19 @@ for recipes on how to build.
 in your image and you can send in a job using…
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
-#SBATCH   nodes=1
+#SBATCH --nodes=1
 # Using the GPU partition which is at the moment is under testing
-#SBATCH  p gpu
+#SBATCH -p gpu
 # Run the executable named myexe
 ml PDC/<version> apptainer
 srun -n 1 apptainer exec --rocm -B /cfs/klemming <sandbox folder> <myexe>
