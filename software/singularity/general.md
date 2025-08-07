@@ -335,7 +335,7 @@ in your image and you can send in a job using…
 # The name of the script is myjob
 #SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH -t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
 #SBATCH --nodes=1
 # Using the shared partition as we are not using all cores
@@ -361,7 +361,7 @@ recipes with Cray MPI support mentioned earlier which do reside in the [https://
 # The name of the script is myjob
 #SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH -t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
 #SBATCH --nodes=2
 # Using the shared partition as we are not using all cores
@@ -390,7 +390,7 @@ in your image and you can send in a job using…
 # The name of the script is myjob
 #SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH -t 1 00 00
+#SBATCH -t 1:00:00
 # Number of nodes
 #SBATCH --nodes=1
 # Using the GPU partition which is at the moment is under testing
