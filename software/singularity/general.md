@@ -19,12 +19,10 @@ More information about singularity can be found at [https://docs.sylabs.io/guide
 ## Security
 
 Singularity is more secure on a HPC than other similar solutions like docker or shifter.
-Read a comparison about them at [http://geekyap.blogspot.se/2016/11/docker-vs-singularity-vs-shifter-in-hpc.html](http://geekyap.blogspot.se/2016/11/docker-vs-singularity-vs-shifter-in-hpc.html)
-
-important to remember is that if you download images they should be trusted
+Read a comparison about them at [https://hpc.auburn.edu/hpc/docs/hpcdocs/build/html/easley/containers.html](https://hpc.auburn.edu/hpc/docs/hpcdocs/build/html/easley/containers.html). It is important to remember that if you download images they should be trusted
 since any container you run will have full access tor your account and your data.
 
-The same goes for images you build yourself that they are built upon
+The same goes for images you build yourself, they should be built upon
 trusted images.
 
 ## Performance
@@ -55,7 +53,7 @@ Installation instructions are available at…
 
 ### Download images from singularity hub
 
-You can find numerous images at [https://singularity-hub.org/](https://singularity-hub.org/)
+You can find numerous images at [https://singularityhub.github.io/singularityhub-archive/](https://singularityhub.github.io/singularityhub-archive/)
 Just download them directly to our file system and use
 them for your analysis. The *build* command
 in singularity, besides downloading the image, also converts the image to the
@@ -329,21 +327,21 @@ In case you would like to run on one node you do not need MPI support
 in your image and you can send in a job using…
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1 00 00
 # Number of nodes
-#SBATCH   nodes=1
+#SBATCH --nodes=1
 # Using the shared partition as we are not using all cores
-#SBATCH  p shared
+#SBATCH -p shared
 # Number of MPI processes per node
-#SBATCH   ntasks per node=24
+#SBATCH --ntasks per node=24
 # Run the executable named myexe
 ml PDC/<version> singularity
 srun -n 24 singularity exec -B /cfs/klemming <sandbox folder> <myexe>
@@ -355,21 +353,21 @@ In case you need to parallelize your software across nodes you should use one of
 recipes with Cray MPI support mentioned earlier which do reside in the [https://github.com/PDC-support/PDC-SoftwareStack](https://github.com/PDC-support/PDC-SoftwareStack)
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1 00 00
 # Number of nodes
-#SBATCH   nodes=2
+#SBATCH --nodes=2
 # Using the shared partition as we are not using all cores
-#SBATCH  p shared
+#SBATCH -p shared
 # Number of MPI processes per node
-#SBATCH   ntasks per node=12
+#SBATCH --ntasks per node=12
 # Run the executable named myexe
 ml PDC/<version> singularity
 srun -n 24 --mpi=pmi2 singularity exec -B /cfs/klemming <sandbox folder> <myexe>
@@ -384,19 +382,19 @@ for recipes on how to build.
 in your image and you can send in a job using…
 
 ```text
-#! bin bash  l
-# The  l above is required to get the full environment with modules
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH  A 201X X XX
+#SBATCH -A 201X-X-XX
 # The name of the script is myjob
-#SBATCH  J myjob
+#SBATCH -J myjob
 # Only 1 hour wall clock time will be given to this job
-#SBATCH  t 1 00 00
+#SBATCH -t 1 00 00
 # Number of nodes
-#SBATCH   nodes=1
+#SBATCH --nodes=1
 # Using the GPU partition which is at the moment is under testing
-#SBATCH  p gpu
+#SBATCH -p gpu
 # Run the executable named myexe
 ml PDC/<version> singularity
 srun -n 1 singularity exec --rocm -B /cfs/klemming <sandbox folder> <myexe>
