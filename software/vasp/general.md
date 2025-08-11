@@ -44,7 +44,8 @@ than 501 (=3x167).
 - Calculate the number of nodes necessary, e.g. 512 cores (128 cores/node) = 4 compute nodes.
 - For a wide calculation with less than 4 bands per core, try decreasing the
   number of cores per node to 64, or even 32. You may also have to do this get
-  memory available for each MPI rank.
+  memory available for each MPI rank. For VASP versions that have shared memory parallelization
+  implemented with OpenMP threading, you can use more than one thread per MPI rank.
 
 ## Vasp Filenames
 - **vasp** : this is normal regular VASP version for calculations using >1 k-point.
@@ -96,7 +97,7 @@ export OMP_NUM_THREADS=1
 
 srun --hint=nomultithread vasp
 ```
-Since OpenMP is supported by this module, you can also submit a job
+Since OpenMP is supported by VASP 6.4.3, you can also submit a job
 requesting 64 MPI processes per node and 2 OpenMP threads per MPI
 process, using the job script below. Please note that in this case
 you need to specify ``--cpus-per-task``, ``OMP_NUM_THREADS``, and ``OMP_PLACES``.
@@ -125,4 +126,162 @@ export OMP_PLACES=cores
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun --hint=nomultithread vasp
+```
+
+## How to build VASP
+These are the steps which were used to build the module `vasp/6.5.1-vanilla`.
+
+### Obtain and unpack the VASP source code
+```
+tar xf vasp.6.5.1.tgz
+cd vasp.6.5.1
+```
+
+### Apply readonly-patch
+In order to lower the footprint on the file system in runtime, apply before compiling the readonly-patch
+```
+--- src/pseudo.F	2025-03-10 16:41:26.000000000 +0100
++++ src/pseudo_new.F	2025-05-05 08:57:54.000000000 +0200
+@@ -233,7 +233,7 @@
+ !        END IF
+       END IF
+ #endif
+-      OPEN(UNIT=10,FILE=DIR_APP(1:DIR_LEN)//'POTCAR',STATUS='OLD',IOSTAT=IERR)
++      OPEN(UNIT=10,FILE=DIR_APP(1:DIR_LEN)//'POTCAR',ACTION='READ',STATUS='OLD',IOSTAT=IERR)
+       IF (IERR/=0) THEN
+          OPEN(UNIT=10,FILE='POTCAR',STATUS='OLD')
+       ENDIF
+--- src/string.F	2025-03-10 16:41:27.000000000 +0100
++++ src/string_new.F	2025-05-05 08:58:56.000000000 +0200
+@@ -94,7 +94,7 @@
+         integer, intent(out) :: ierr  !< error flag that will be set if accessing the file fails
+         character(len=:), allocatable :: content
+         integer file_unit
+-        open(newunit=file_unit,file=filename,status='old',form='unformatted',access='stream',iostat=ierr)
++        open(newunit=file_unit,file=filename,status='old',form='unformatted',access='stream',action='read',iostat=ierr)
+```
+by storing the patch to file name `POTCAR-readonly-651.patch` and applying it with the patch command
+```
+patch -p0 -b < POTCAR-readonly-651.patch
+```
+
+### Configure the VASP makefile.include
+
+Configure the `makefile.include` file as needed. For the globally installed VASP modules the
+file can be found in the directory `$VASPROOT/example-files`. Here are the settings used for
+the `vasp/6.5.1-vanilla` module.
+```
+# Default precompiler options
+CPP_OPTIONS = -DHOST=\"Dardel\" \
+              -DMPI -DMPI_BLOCK=65536 -Duse_collective \
+              -DscaLAPACK \
+              -DCACHE_SIZE=65536 \
+              -Davoidalloc \
+              -Dvasp6 \
+              -Dtbdyn \
+              -Dfock_dblbuf \
+              -D_OPENMP -DnoSTOPCAR
+
+CPP         = cc -E -C -w $*$(FUFFIX) >$*$(SUFFIX) $(CPP_OPTIONS)
+
+FC          = ftn -fopenmp
+FCL         = ftn -fopenmp
+
+FREE        = -ffree-form -ffree-line-length-none
+
+FFLAGS      = -w -ffpe-summary=none
+
+OFLAG       = -O2
+OFLAG_IN    = $(OFLAG)
+DEBUG       = -O0
+
+# For what used to be vasp.5.lib
+CPP_LIB     = $(CPP)
+FC_LIB      = $(FC)
+CC_LIB      = cc
+CFLAGS_LIB  = -O
+FFLAGS_LIB  = -O1
+FREE_LIB    = $(FREE)
+
+OBJECTS_LIB = linpack_double.o
+
+# For the parser library
+CXX_PARS    = CC
+LLIBS       = -lstdc++
+
+##
+## Customize as of this point! Of course you may change the preceding
+## part of this file as well if you like, but it should rarely be
+## necessary ...
+##
+
+# When compiling on the target machine itself, change this to the
+# relevant target when cross-compiling for another architecture
+#VASP_TARGET_CPU ?= -march=native
+#FFLAGS     += $(VASP_TARGET_CPU)
+
+# For gcc-10 and higher (comment out for older versions)
+FFLAGS     += -fallow-argument-mismatch
+
+# BLAS and LAPACK (mandatory)
+#OPENBLAS_ROOT ?= /path/to/your/openblas/installation
+#BLASPACK    = -L$(OPENBLAS_ROOT)/lib -lopenblas
+
+# scaLAPACK (mandatory)
+#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation
+#SCALAPACK   = -L$(SCALAPACK_ROOT)/lib -lscalapack
+
+#LLIBS      += $(SCALAPACK) $(BLASPACK)
+
+# FFTW (mandatory)
+#FFTW_ROOT  ?= /path/to/your/fftw/installation
+#LLIBS      += -L$(FFTW_ROOT)/lib -lfftw3 -lfftw3_omp
+#INCS       += -I$(FFTW_ROOT)/include
+
+# HDF5-support (optional but strongly recommended, and mandatory for some features)
+#CPP_OPTIONS+= -DVASP_HDF5
+#HDF5_ROOT  ?= /path/to/your/hdf5/installation
+#LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
+#INCS       += -I$(HDF5_ROOT)/include
+
+# For the VASP-2-Wannier90 interface (optional)
+#CPP_OPTIONS    += -DVASP2WANNIER90
+#WANNIER90_ROOT ?= /path/to/your/wannier90/installation
+#LLIBS          += -L$(WANNIER90_ROOT)/lib -lwannier
+
+# For the fftlib library (recommended)
+#CPP_OPTIONS+= -Dsysv
+#FCL        += fftlib.o
+#CXX_FFTLIB  = CC -fopenmp -std=c++11 -DFFTLIB_THREADSAFE
+#INCS_FFTLIB = -I./include -I$(FFTW_ROOT)/include
+#LIBS       += fftlib
+#LLIBS      += -ldl
+
+# For machine learning library vaspml (experimental)
+#CPP_OPTIONS += -Dlibvaspml
+#CPP_OPTIONS += -DVASPML_USE_CBLAS
+#CPP_OPTIONS += -DVASPML_DEBUG_LEVEL=3
+#CXX_ML      = mpic++ -fopenmp
+#CXXFLAGS_ML = -O3 -std=c++17 -pedantic-errors -Wall -Wextra
+#INCLUDE_ML  = -I$(OPENBLAS_ROOT)/include
+```
+
+### Load the build environment, Gnu toolchain
+```
+ml PDC/24.11
+ml cpeGNU/24.11
+ml cray-fftw/3.3.10.9
+```
+
+### Build the VASP executables
+```
+make
+```
+
+### Create symbolic links for the executables
+```
+cd bin
+ln -s vasp_std vasp
+ln -s vasp_ncl vasp_noncollinear
+ln -s vasp_gam vasp_gamma
 ```
