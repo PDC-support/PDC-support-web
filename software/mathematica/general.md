@@ -48,6 +48,8 @@ ml PDC/<version>
 ml mathematica/14.0.0
 mathematica
 ```
+For more recent versions of Mathematica, the GUI can be started with `wolframnb`.
+
 In case you do not need a full node with 128 cores, you could request
 cores in the shared partition. These cores are shared with other users,
 with the amount of memory provided proportional to the number of cores
