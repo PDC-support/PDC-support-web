@@ -4,6 +4,11 @@ resources:
       - version: r2012b
       - version: r2013b
       - version: r2013a
+  - resource: cpe24.11
+    versions:
+      - version: r2022b
+      - version: r2023a
+      - version: r2024b
   - resource: cpe23.12
     versions:
       - version: r2024a
