@@ -1,4 +1,7 @@
 resources:
+  - resource: cpe24.11
+    versions:
+      - version: 25.3.1-1
   - resource: cpe23.12
     versions:
       - version: 2024.02-1

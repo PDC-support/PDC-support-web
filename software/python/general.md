@@ -8,6 +8,15 @@ python -V
 
     The Anaconda3 module will be decommissioned by 2024-12-31, due to license policy changes in the Anaconda organization. Please migrate to use the module miniconda3 instead.
 
+# Cray Python
+
+One way to load different versions of python installed on the system is to use the `cray-python` module. It can loaded using:
+```
+$ ml PDC/<version>
+$ ml cray-python/<version>
+```
+The available versions of this module can be checked using `module avail cray-python`   
+
 # Miniconda
 Python has a very large number of optional packages for
 large-scale data processing and scientific computing
@@ -21,7 +30,7 @@ $ ml av miniconda3
 
 For example, to load Miniconda version 2024.07.1 type:
 ```
-$ ml miniconda3/24.7.1-0-cpeGNU-23.12
+$ ml miniconda3/25.3.1-1-cpeGNU-24.11
 ```
 
 After loading a miniconda module, the Python version can be printed by:
@@ -60,7 +69,7 @@ install everything you would want into that environment. For example
 you can create a conda environment under your Klemming folder:
 ```
 ml PDC/<version>
-ml miniconda3/24.7.1-0-cpeGNU-23.12
+ml miniconda3/25.3.1-1-cpeGNU-24.11
 conda create --name my-conda-env
 source activate my-conda-env
 conda install <package-name>
@@ -83,7 +92,7 @@ Another option for installing packages which are missing from the available Mini
 modules (and their conda environments) is to install them locally with `pip`:
 ```
 $ ml PDC/<version>
-$ ml miniconda3/24.7.1-0-cpeGNU-23.12
+$ ml miniconda3/25.3.1-1-cpeGNU-24.11
 $ pip install --user <package-name>
 ```
 This should install the package locally under ``~/.local/lib/[.....]``.
@@ -97,7 +106,7 @@ the srun command:
 ```
 $ salloc -A <your-project-ID> -t 1:0:0 -n 1 -p shared
 $ ml PDC/<version>
-$ ml miniconda3/24.7.1-0-cpeGNU-23.12
+$ ml miniconda3/25.3.1-1-cpeGNU-24.11
 $ source activate my-conda-env
 $ srun -n 1 python some_script.py
 ```
@@ -118,7 +127,7 @@ $ srun -n 1 python some_script.py
 #SBATCH -p shared
 # load the Miniconda module
 ml PDC/<version>
-ml miniconda3/24.7.1-0-cpeGNU-23.12
+ml miniconda3/25.3.1-1-cpeGNU-24.11
 # if you need the custom conda environment:
 source activate my-conda-env
 # execute the program
@@ -133,7 +142,7 @@ source deactivate
 To list all available Miniconda modules on Dardel, type:
 ```
 $ module load PDC
-$ module load miniconda3/24.7.1-0-cpeGNU-23.12
+$ module load miniconda3/25.3.1-1-cpeGNU-24.11
 ```
 After loading an Miniconda module, there are information on how to use the Miniconda module:
 *JUST LOADING THIS MODULE DOES *NOT* CHANGE THE PYTHON VERSION, NOR ENABLES

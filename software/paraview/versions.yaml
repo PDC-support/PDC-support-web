@@ -1,4 +1,8 @@
 resources:
+  - resource: cpe24.11
+    versions:
+      - version: 5.12.0
+      - version: 5.12.0-gui
   - resource: cpe23.12
     versions:
       - version: 5.12.0

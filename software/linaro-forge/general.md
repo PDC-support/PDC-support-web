@@ -16,7 +16,7 @@ Whether at one process or ten thousand, Allinea MAP is designed to work out-of-t
 Load the the Linaro-forge 24.0 suite 
 ```
 $ module load PDC
-$ module load linaro/24.0
+$ module load linaro-forge/24.0
 ```
 To prepare code for MAP or DDT, just compile with debugging enabled 
 ```

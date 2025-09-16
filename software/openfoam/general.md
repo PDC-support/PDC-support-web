@@ -57,7 +57,7 @@ sample job script
 
 # Load the openfoam module
 module load PDC
-module load openfoam/v2312
+module load openfoam/v2406
 
 # Set the openfoam environment variables
 . $FOAM_BASHRC
