@@ -27,8 +27,7 @@ http://www.comsol.com
 module load comsol
 ```
 
-!!! note load PDC module
-    Please note that the `PDC` module needs to be loaded before loading the `abaqus` module
+
 
 # Running Comsol on Dardel
 To submit a job on single node (containing 128 cores), you can do so by creating a simple script (comsol_run.sh) which includes:
@@ -55,7 +54,7 @@ To submit a job on single node (containing 128 cores), you can do so by creating
 #SBATCH -o output_file.o%J
 
 # load comsol module
-module load PDC
+# module load PDC
 module add comsol/5.6
 
 

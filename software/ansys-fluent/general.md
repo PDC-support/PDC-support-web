@@ -2,16 +2,23 @@ Ansys/Fluent is a computational fluid dynamics (CFD) software. Fluent is a gener
 
 # How to use Ansys/Fluent on PDC machines
 In order to use ANSYS Fluent at PDC you need to:
-1. Have an account at PDC.
+
+1. Have an account at PDC
 2. Check with the Ansys license owner at your department to allow running Ansys/Fluent at PDC
 3. Contact KTH if you have problems/questions with Ansys/Fluent licenses.
 
 Use the  commands
 ```
-module load PDC
 module avail fluent
 ```
 to list all available versions and make sure that the correct version is loaded in the job script. If the version using which the .cas file was created can't be found in the list of installed versions, please contact PDC (support@pdc.kth.se).
+
+To load a specific version of the fluent module, the following command can be used
+
+```
+module load fluent/<version>
+```
+where `<version>` is replaced by the actual version, as displayed when using the module avail command. 
 
 For more details, look at Ansys web page:
 [http://www.ansys.com/](http://www.ansys.com/)
@@ -63,7 +70,7 @@ Then you can use the following script for running Ansys/Fluent on Dardel:
 #SBATCH -e error_file.e%J
 
 # load module fluent v24.2
-module load PDC
+# module load PDC
 module load fluent/24.2
 
 # The Journal file

@@ -26,8 +26,10 @@ sample job script
 #SBATCH --ntasks-per-node=128
 #SBATCH -e error_file.e%J
 #SBATCH -o output_file.o%J
-module load PDC
-module load starccm+/18.02.008
+
+# module load PDC
+module load starccm+/<version>
+
 sim_file="my_case.sim"
 export TMPDIR=$(pwd)/starccm_tmp/
 LUSTRE_ROOT=$(pwd)/starccm_tmp/StarCCM_config

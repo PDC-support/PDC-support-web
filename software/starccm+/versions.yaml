@@ -1,4 +1,15 @@
 resources:
+  - resource: cpe24.11
+    versions:
+      - version: 20.02.008
+      - version: 19.06.008-dp
+      - version: 19.04.007-dp
+      - version: 19.02.013-dp
+      - version: 19.02.009
+      - version: 18.06.006-dp
+      - version: 18.02.008
+      - version: 17.06.008
+  
   - resource: cpe23.12
     versions:
       - version: 19.06.008-dp
