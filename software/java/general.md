@@ -1,4 +1,4 @@
-Java is a general-purpose computer programming language that is concurrent, class-based and object-oriented. It is a high-level, statically typed general purpose programming language with an extensive concurrency library. Compiled Java code can run on all platforms that support Java without the need for recompilation.
+Java is a high-level, general-purpose programming language that is object-oriented, memory safe, and concurrent. It is statically typed and comes with an extensive concurrency library. Compiled Java code can run on all platforms that support Java without the need for recompilation.
 
 ## How to use
 
