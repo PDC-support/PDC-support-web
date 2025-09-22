@@ -8,15 +8,6 @@ python -V
 
     The Anaconda3 module will be decommissioned by 2024-12-31, due to license policy changes in the Anaconda organization. Please migrate to use the module miniconda3 instead.
 
-# Cray Python
-
-One way to load different versions of python installed on the system is to use the `cray-python` module. It can loaded using:
-```
-$ ml PDC/<version>
-$ ml cray-python/<version>
-```
-The available versions of this module can be checked using `module avail cray-python`   
-
 # Miniconda
 Python has a very large number of optional packages for
 large-scale data processing and scientific computing
@@ -28,7 +19,7 @@ $ ml PDC/<version>
 $ ml av miniconda3
 ```
 
-For example, to load Miniconda version 2024.07.1 type:
+For example, to load Miniconda version 25.3.1-1, type:
 ```
 $ ml miniconda3/25.3.1-1-cpeGNU-24.11
 ```
@@ -136,9 +127,20 @@ srun -n 1 python some_script.py
 source deactivate
 ```
 
+# Cray Python
+
+An alternative to Miniconda is to use the system-provided `cray-python` module. It can loaded using:
+```
+$ ml cray-python/<version>
+```
+The available versions of this module can be checked using `module avail cray-python`.
+Since the python-versions provided by cray-python are substantially older than the ones provided
+by Miniconda, it is only recommend to use cray-python when installing packages in Miniconda fail;
+the most prominent examples of this are the libraries `mpi4py` and `h5py`.
+
 ## How to use
 
-# Load the Minionda module
+# Load the Miniconda module
 To list all available Miniconda modules on Dardel, type:
 ```
 $ module load PDC
