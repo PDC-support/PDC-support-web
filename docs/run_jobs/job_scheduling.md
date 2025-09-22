@@ -55,7 +55,7 @@ be scheduled next.
 
 ## Dardel compute nodes
 
-Compute nodes on Dardel have five different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software. Therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 128 physical cores per node.
+Compute nodes on Dardel have five different flavors with different amounts of memory. A certain amount of the memory is reserved for the operating system and system software. Therefore the amount of memory available for user software is also listed in the table below. All nodes have the same dual socket processors, for a total of 256 logical cores (128 physical cores w. two hyperthreads each) per node.
 
 | Node type   |   Node count | RAM    | Partition          | Available   | Example used flag   |
 |-------------|--------------|--------|--------------------|-------------|---------------------|
@@ -104,8 +104,8 @@ an equivalent size of RAM for your job.
 
 When running on shared nodes, you need to add the number of cores you will be using or the amount of memory you need.
 The amount of memory is equivalent to the amount of cores you are asking for and viceversa.
-For example, we are using a node with 128 cores and 256 Gbytes of RAM.
-If you are asking for 20 cores, you will receive 40 Gbytes of RAM. Instead of you are asking for 80 Gbytes of RAM, you will automatically receive 40 cores.
+For example, we are using a node with 256 logical cores (128 physical cores) and 256 Gbytes of RAM.
+If you are asking for 20 cores, you will receive 17 Gbytes of RAM. Instead of you are asking for 80 Gbytes of RAM, you will automatically receive 94 cores.
 The cores or memory that is the largest for the job will dictate what is needed.
 
 ### Paremeters needed on shared nodes
@@ -113,19 +113,19 @@ The cores or memory that is the largest for the job will dictate what is needed.
 | Parameter | Description |
 | --- | --- |
 | `-n [tasks]` | Allocates ntasks |
-| `--cpus-per-task=[cores]` | Allocates physical [cores]=ntasks*cpu-per-task. (Default: cpus-per-task=1) |
+| `--cpus-per-task=[cores]` | Allocates logical [cores]=ntasks*cpu-per-task. (Default: cpus-per-task=1) |
 | `--mem=[RAM in Mbytes]` | The max amount of RAM allocated for your job |
 
-**Example 1:** On a shared node with 128 cores, 256 Gbytes RAM.
-In this case you will receive 20 cores, 40 GBytes RAM
+**Example 1:** On a shared node with 128 physical cores, 256 Gbytes RAM.
+In this case you will receive 20 logical cores, 17 GBytes RAM
 ```default
 #SBATCH  -p shared
 #SBATCH  --ntasks=10
 #SBATCH --cpus-per-task=2
 ```
 
-**Example 2:** On a shared node with 128 cores, 256 Gbytes RAM.
-In this case you will receive 20 cores, 40 GBytes RAM. The amount of cores you ask for does not cover your need for RAM.
+**Example 2:** On a shared node with 128 physical cores, 256 Gbytes RAM.
+In this case you will receive 48 logical cores, 40 GBytes RAM. The amount of cores you ask for does not cover your need for RAM.
 ```default
 #SBATCH  -p shared
 #SBATCH  --ntasks=2
