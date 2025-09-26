@@ -230,48 +230,27 @@ in the PDC Hub, but you can also build your own.
 
 ## How to remote build a singularity image on the cluster
 
-Instead of running singularity on your local computer as a mean to create a singularity sandbox, you
-can instead use the remote build function with a singularity recipy.
-Examples of recipies are available at [https://github.com/PDC-support/PDC-SoftwareStack/tree/master/other/singularity](https://github.com/PDC-support/PDC-SoftwareStack/tree/master/other/singularity)
-In the description below we use the free service from sylabs for creating sandboxes at PDC.
+Instead of creating containers by running singularity locally on your computer, you can remote build with a singularity recipe.
+You can find example recipes here: https://github.com/PDC-support/PDC-SoftwareStack/tree/master/other/singularity
 
-### Create a sylabs account
+In the following description, we demonstrate how to use PDC’s free service for building sandboxes remotely.
 
-In order to be able to get access to the remote building facility you need to
-create a free account at [https://cloud.sylabs.io/builder](https://cloud.sylabs.io/builder)
+### Using command on Dardel for remote building
 
-### Create sylabs token
-
-1. Login into sylabs [https://cloud.sylabs.io/builder](https://cloud.sylabs.io/builder)
-1. Press **USERNAME -> Access tokens**
-1. Enter a name for your *token* and press **Create Access Token**
-1. Copy or download the token.
-
-### Adding an access token to the cluster
-
-First of all login to the PDC cluster and access the module singularity
+First of all login to the PDC cluster and access the module apptainer or singularity
 
 ```text
 ml PDC/<version>
-ml singularity
+ml apptainer (or singularity)
 ```
 
 After this run command
 
 ```text
-singularity remote login
+create_container <recipe name>
 ```
 
-The first time you run this command on the cluster, it will save your access token to your profile.
-Running the same command again will erase the old token and you can add a new one.
-
-### Remote build a container on the cluster
-
-After having a valid token you can build your singularity sandbox remotely using the command…
-
-```text
-singularity build --remote --sandbox <sandbox name> <recipe name>
-```
+Use parameter `--help`to get more information
 
 ## Create a container at seqera
 
