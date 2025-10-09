@@ -55,7 +55,7 @@ Example:
 $ cd [name]
 $ pixi init [name]
 $ pixi add gromacs
-✔ Added gromacs >=2025.3,<2026
+  Added gromacs >=2025.3,<2026
 $ pixi run gmx
 ```
 If that software is not needed anymore use `pixi remove [software]`
