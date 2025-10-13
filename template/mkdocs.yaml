@@ -56,6 +56,7 @@ nav:
     - Compilers and libraries: software_development/development.md
     - Building for AMD CPUs: software_development/development_cpu.md
     - Building for AMD GPUs: software_development/development_gpu.md
+    - Building for NVIDIA GPUs: software_development/development_gpugh.md
     - Allinea Forge: software_development/development_allineaforge.md
     - Downloadable example for compiling and submitting: software_development/development_example.md
     - References: software_development/development_references.md
