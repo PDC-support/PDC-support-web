@@ -84,7 +84,7 @@ In the above example, even if the job is allocated a node with 1 TB of memory, i
 
 ## Dardel partitions
 
-The compute nodes on Dardel are divided into five partitions. Each job must specify one of these partitions using the `-p` flag. The table below explains the difference between the partitions. See the table above for descriptions of the various node types.
+The compute nodes on Dardel are divided into several partitions. Each job must specify one of these partitions using the `-p` flag. The table below explains the difference between the partitions. See the table above for descriptions of the various node types.
 
 | Partition name   | Characteristics                                                                                                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -92,7 +92,9 @@ The compute nodes on Dardel are divided into five partitions. Each job must spec
 | long             | Thin nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 7 days                                                                                                               |
 | shared           | Thin nodes<br/><br/>Jobs are allocated to cores, not nodes<br/><br/>By default granted one core, get more with `-n or -c`<br/><br/>Job shares node with other jobs<br/><br/>Maximum job time 7 days |
 | memory           | Large, huge and giant nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 7 days                                                                                              |
-| gpu              | GPU nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours                                                                                                              |
+| gpu              | AMD GPU nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours                                                                                                              |
+| gpugh              | Nvidia GPU nodes<br/><br/>Job gets whole nodes (exclusive)<br/><br/>Maximum job time 24 hours                                                                                                              |
+
 
 ## How to run on shared partitions
 

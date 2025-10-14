@@ -63,6 +63,7 @@
     * [Troubleshooting login problems](login/kerberos_login.md#troubleshooting-login-problems)
     * [How to configure kerberos](login/configuration.md)
     * [How to reset your password](login/reset_password.md)
+* [How to access to Nvidia login node](login/nvidia_login.md)
 * [Interactive HPC at PDC](login/interactive_hpc.md)
     * [How ThinLinc can help in my computation?](login/interactive_hpc.md#how-thinlinc-can-help-in-my-computation)
     * [Kerberos Authentication](login/interactive_hpc.md#kerberos-authentication)
