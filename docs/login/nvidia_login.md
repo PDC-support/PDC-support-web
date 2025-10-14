@@ -11,5 +11,6 @@ If your allocation contains Nvidia GPU resources you can login to
 this node using...
 
 ```text
+ssh dardel.pdc.kth.se
 ssh logingh
 ```
