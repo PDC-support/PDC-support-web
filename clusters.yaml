@@ -1,3 +1,5 @@
+- cluster: Dardel-GH
+  env: cpe25.03.gh
 - cluster: Dardel
   env: cpe24.11
 - cluster: Dardel-GPU
