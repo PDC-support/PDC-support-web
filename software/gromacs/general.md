@@ -104,7 +104,8 @@ echo "Script finished at `date` on `hostname`"
 
 ## How to build GROMACS
 
-The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/).
+The builds of GROMACS for AMD CPU nodes are mainly done with [EasyBuild](https://docs.easybuild.io/en/latest/)
+using **cpeGNU** and **cpeCray** toolchains.
 A build in your local file space can be done with
 
 ```bash
@@ -114,3 +115,66 @@ eb gromacs-2025.1-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+
+The builds for AMD GPU nodes are done with the **PrgEnv-amd** toolchain.
+
+```bash
+#!/bin/bash
+# Build instructions for GROMACS 2025.2 on Dardel
+
+# Load the environment
+ml PDC/24.11
+ml craype-accel-amd-gfx90a
+ml swap PrgEnv-cray/8.6.0 PrgEnv-amd/8.6.0
+ml swap amd/6.0.0 amd/6.3.3
+ml cray-mpich/8.1.31
+ml cray-fftw/3.3.10.9
+ml cray-libsci/24.11.0
+ml cmake/4.0.1
+ml rocm/6.3.3
+ml boost/1.79.0-nompi
+
+# GROMACS 2025.2
+# Download and untar the source code
+wget https://gitlab.com/gromacs/gromacs/-/archive/v2025.2/gromacs-v2025.2.tar.gz
+tar xvf gromacs-v2025.2.tar.gz
+cd gromacs-v2025.2/
+
+# Set AdaptiveCpp environment variables
+export PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/bin:$PATH
+export LIBRARY_PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/lib:$LIBRARY_PATH
+export CPATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/include:$CPATH
+
+# Configure
+mkdir build
+cd build
+cmake ../ \
+-DCMAKE_C_COMPILER=amdclang \
+-DCMAKE_CXX_COMPILER=amdclang++ \
+-Dadaptivecpp_DIR=/pdc/software/24.11/other/adaptivecpp/25.02.0/lib/cmake/AdaptiveCpp \
+-DCMAKE_BUILD_TYPE=Release \
+-DGMX_BUILD_OWN_FFTW=OFF \
+-DGMX_SIMD=AVX2_256 \
+-DGMX_OPENMP=ON \
+-DGMXAPI=OFF \
+-DGMX_GPU=SYCL \
+-DGMX_SYCL=ACPP \
+-DACPP_TARGETS='hip:gfx90a' \
+-DGMX_GPU_FFT_LIBRARY=vkfft \
+-DGMX_CYCLE_SUBCOUNTERS=ON \
+-DGMX_MPI=ON \
+-DMPI_CXX_SKIP_MPICXX=ON \
+-DMPI_CXX_COMPILER=CC -DGMX_BLAS_USER=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_amd.so \
+-DGMX_LAPACK_USER=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_amd.so \
+-DCMAKE_{EXE,SHARED}_LINKER_FLAGS=-fuse-ld=ld \
+-DCMAKE_INSTALL_PREFIX=/pdc/software/24.11/other/gromacs/2025.2-gpu > BuildGROMACS_CMakeLog.txt 2>&1
+
+# Build and install
+make -j 64 > BuildGROMACS_make.txt 2>&1
+make install
+
+# Set runtime environment
+export LD_LIBRARY_PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/pdc/software/24.11/other/gromacs/2025.2-gpu/lib:$LD_LIBRARY_PATH
+export PATH=/pdc/software/24.11/other/gromacs/2025.2-gpu/bin:$PATH
+```
