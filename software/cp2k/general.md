@@ -18,12 +18,10 @@ You need to replace *pdc.staff* with an active project that you belong to.
 
 ```
 #!/bin/bash
-
 #SBATCH -J cp2k-test
 #SBATCH -A pdc.staff
 #SBATCH -p main
 #SBATCH -t 1-00:00:00
-
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --cpus-per-task=8
@@ -53,12 +51,10 @@ the optimal setting for running on 8 nodes on Dardel is
 
 ```
 #!/bin/bash
-
 #SBATCH -J cp2k-test
 #SBATCH -A pdc.staff
 #SBATCH -p main
 #SBATCH -t 01:00:00
-
 #SBATCH --nodes=8
 #SBATCH --ntasks-per-node=16
 #SBATCH --cpus-per-task=8
@@ -76,12 +72,10 @@ For using CP2K together with PLUMED, we suggest to use 128 MPI ranks and 1 threa
 
 ```
 #!/bin/bash
-
 #SBATCH -J cp2k-test
 #SBATCH -A pdc.staff
 #SBATCH -p main
 #SBATCH -t 1-00:00:00
-
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=128
 #SBATCH --cpus-per-task=1
@@ -97,17 +91,15 @@ srun --hint=nomultithread cp2k.psmp -i inputfile.inp -o logfile.log
 
 The executables for Dardel GPU nodes have been built with backend for AMD GPUs, with linking to GPU builds of the libraries COSMA, SpFFT, and SPLA.
 
-**Note: A build of CP2K under PDC/24.11 for Dardel GPU nodes is work in progress. The build contained in module *cp2k/2024.3-cpeGNU-23.12-gpu* was done for the earlier version 23.12 of the Cray Parallel Environment and is unfortunately not working on the system after recent upgrades of the operating system.**
-
 To load the CP2K module
 
 ```
-ml PDC/23.12
-ml cp2k/2024.3-cpeGNU-23.12-gpu
+ml PDC/24.11
+ml cp2k/2025.2-cpeGNU-24.11-gpu
 ```
 
-Below follows an example job script for CP2K, for running on a single Dardel GPU node
-using 8 MPI tasks (corresponding to one MPI task per GPU) and 8 OpenMP threads.
+Below follows an example job script for CP2K, for running on two Dardel GPU nodes
+using 8 MPI tasks per node (corresponding to one MPI task per GPU) and 8 OpenMP threads.
 You need to replace *pdc.staff* with an active project that you belong to.
 **Note: This script is a simple template. For efficient calculation the script needs to
 be augmented with settings to pin appropriately the computation threads to the CCDs
@@ -115,27 +107,27 @@ and GCD.**
 
 ```
 #!/bin/bash
-
-#SBATCH -J cp2k-test
 #SBATCH -A pdc.staff
 #SBATCH -p gpu
+#SBATCH -J cp2k
 #SBATCH -t 02:00:00
-
-#SBATCH --nodes=1
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 
-ml PDC/23.12
-ml cp2k/2024.3-cpeGNU-23.12-gpu
-
-export MPICH_GPU_SUPPORT_ENABLED=1
+# Number and placement of OpenMP threads
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=8
 export OMP_PLACES=cores
+export OMP_PROC_BIND=false
+export MPICH_GPU_SUPPORT_ENABLED=1
 
-# Add settings to pin threads to CCDs and GCDs
+ml PDC/24.11
+ml cp2k/2025.2-cpeGNU-24.11-gpu
 
-srun cp2k.psmp -i inputfile.inp -o logfile.log
+echo "Script initiated at `date` on `hostname`"
+time srun --hint=nomultithread -n 16 cp2k.psmp -i inputfile.inp -o logfile.log
+echo "Script finished at `date` on `hostname`"
 ```
 
 Assuming the script is named jobscriptCP2K.sh, it can be submitted using
