@@ -18,11 +18,11 @@ ml spider gromacs
 For example, to load the module for GROMACS 2024.2/
 ```
 ml PDC/<version>
-ml gromacs/2024.2-cpeGNU-23.12
+ml gromacs/2025.1-cpeGNU-24.11
 ```
 To see what environment variables are set when loading the module
 ```
-ml gromacs/2024.2-cpeGNU-23.12
+ml gromacs/2025.1-cpeGNU-24.11
 ```
 Preprocessing input files (molecular topology, initial coordinates and
 mdrun parameters) to create a portable run input (.tpr) file can be run
@@ -49,22 +49,57 @@ command! Here is an example script that requests 2 nodes:
 
 ```
 #!/bin/bash
-
 #SBATCH -J my_gmx_job
 #SBATCH -A naissYYYY-X-XX
 #SBATCH -p main
 #SBATCH -t 01:00:00
-
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=128
 
 ml PDC/<version>
-ml gromacs/2024.2-cpeGNU-23.12
+ml gromacs/2025.1-cpeGNU-24.11
 
 export OMP_NUM_THREADS=1
 
 srun -n 1 gmx_mpi grompp -c conf.gro -p topol.top -f grompp.mdp
 srun gmx_mpi mdrun -s topol.tpr -deffnm gmx_md
+```
+
+The executables for Dardel GROMACS GPU nodes have been built with the AdaptiveCPP backend for AMD GPUs
+
+To load the GROMACS module for AMD GPUs
+
+```
+ml PDC/24.11
+ml cp2k/2025.2-cpeGNU-24.11-gpu
+```
+
+Below follows an example job script for GROMACS, for running on one Dardel GPU node
+using 8 MPI tasks per node (corresponding to one MPI task per GPU) and 8 OpenMP threads.
+You need to replace *pdc.staff* with an active project that you belong to.
+**Note: This script is a simple template. For efficient calculation the script needs to
+be augmented with settings to pin appropriately the computation threads to the CCDs
+and GCD.**
+
+```bash
+#!/bin/bash
+#SBATCH -J my_gmx_job
+#SBATCH -A pdc.staff
+#SBATCH -p gpu
+#SBATCH -t 24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --gpus-per-node=8
+
+ml PDC/24.11
+ml gromacs/2025.2-gpu
+
+export OMP_NUM_THREADS=1
+export MPICH_GPU_SUPPORT_ENABLED=1
+
+echo "Script initiated at `date` on `hostname`"
+srun gmx_mpi mdrun -s topol.tpr -deffnm gmx_md
+echo "Script finished at `date` on `hostname`"
 ```
 
 ## How to build GROMACS
@@ -73,9 +108,9 @@ The program was installed using [EasyBuild](https://docs.easybuild.io/en/latest/
 A build in your local file space can be done with
 
 ```bash
-ml PDC/23.12
-ml easybuild-user/4.9.1
-eb gromacs-2024.2-cpeGNU-23.12.eb --robot
+ml PDC/24.11
+ml easybuild-user/4.9.4
+eb gromacs-2025.1-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
