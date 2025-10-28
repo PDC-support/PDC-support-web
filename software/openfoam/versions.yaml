@@ -3,6 +3,7 @@ resources:
   - resource: cpe24.11
     versions:
       - version: v2406
+      - version: 13
       - version: 12
       - version: 6
   
