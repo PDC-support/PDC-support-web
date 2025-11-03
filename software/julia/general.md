@@ -7,7 +7,7 @@ More information can be found here https://julialang.org
 To load the module
 ```
 ml PDC/<version>
-ml julia/1.8.2-cpeGNU-22.06
+ml julia/1.12.1
 ```
 
 Please consult the Julia language documentation:
