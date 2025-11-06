@@ -26,6 +26,7 @@ Sample job script to queue an UppASD job with 16 openMP threads on cores on the 
 #SBATCH -J myjob              # The name of the script is myjob
 #SBATCH -t 02:00:00           # 2 hours wall-clock time
 #SBATCH -p shared             # The partition
+#SBATCH -N 1                  # Number of nodes
 #SBATCH -c 16                 # Number of cpus per task
 
 ml PDC/<version>
