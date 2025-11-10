@@ -11,12 +11,15 @@ $ module load PrgEnv-gnu
 $ module load PDC
 $ module load tau
 ```
-Compile your code as you usually do, and export the environment variables:
+Compile your code using tau wrappers, such as `tau_cc`, `tau_cxx`, `tau_f90`/`tau_f77`. For instance, to compile a `C++` code, the following command can be used:
 
-```
-export PROFILEDIR=<path-to-profiling-data-directory>
-export TAU_TRACE=1 TAU_PROFILE=1
-```
+`tau_cxx.sh <myProgran.cpp> -o <myProgramEx>`
+
+
+and export the environment variable:
+
+`export PROFILEDIR=<path-to-profiling-data-directory>`
+<!--- export TAU_TRACE=1 TAU_PROFILE=1 -->
 Then, run the program binary as follows:
 
 `srun <flags-as-usual> tau_exec <binary>`
