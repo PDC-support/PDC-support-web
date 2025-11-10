@@ -15,10 +15,12 @@ Compile your code using tau wrappers, such as `tau_cc`, `tau_cxx`, `tau_f90`/`ta
 
 `tau_cxx.sh <myProgran.cpp> -o <myProgramEx>`
 
+Tracing and profiling are turned on by default when the module is loaded. If you'd like to disable one of them, the environment variables `export TAU_TRACE=0` and/or `export TAU_PROFILE=0` can be set this way respectively. Further, the location for storing the profiling, tracing data can be set using:
 
-and export the environment variable:
-
-`export PROFILEDIR=<path-to-profiling-data-directory>`
+```
+export PROFILEDIR=<path-to-profiling-data-directory>
+export TRACEDIR=<path-to-tracing-data-directory>
+```
 <!--- export TAU_TRACE=1 TAU_PROFILE=1 -->
 Then, run the program binary as follows:
 
