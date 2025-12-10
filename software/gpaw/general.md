@@ -133,6 +133,7 @@ cmake .. \
 -DCMAKE_INSTALL_LIBDIR=lib \
 -DBUILD_SHARED_LIBS=ON \
 -DCMAKE_INSTALL_PREFIX=`pwd`/install > BuildLibxc_CMakeLog.txt 2>&1
+```
 
 Build and install Libxc
 ```text
