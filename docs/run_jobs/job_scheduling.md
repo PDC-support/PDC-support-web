@@ -110,26 +110,29 @@ For example, we are using a node with 256 logical cores (128 physical cores) and
 If you are asking for 20 cores, you will receive 17 Gbytes of RAM. Instead of you are asking for 80 Gbytes of RAM, you will automatically receive 94 cores.
 The cores or memory that is the largest for the job will dictate what is needed.
 
-### Paremeters needed on shared nodes
+### Parameters needed on shared nodes
 
 | Parameter | Description |
 | --- | --- |
-| `-n [tasks]` | Allocates ntasks |
+| `-n [nnodes]` | Allocates nnodes. Set this to 1 in order to force all cores to be on the same node |
+| `-n [ntasks]` | Allocates ntasks |
 | `--cpus-per-task=[cores]` | Allocates logical [cores]=ntasks*cpu-per-task. (Default: cpus-per-task=1) |
 | `--mem=[RAM in Mbytes]` | The max amount of RAM allocated for your job |
 
 **Example 1:** On a shared node with 128 physical cores, 256 Gbytes RAM.
-In this case you will receive 20 logical cores, 17 GBytes RAM
+In this case you will receive 20 logical cores, 17 GBytes RAM.
 ```default
-#SBATCH  -p shared
-#SBATCH  --ntasks=10
+#SBATCH -N 1
+#SBATCH -p shared
+#SBATCH --ntasks=10
 #SBATCH --cpus-per-task=2
 ```
 
 **Example 2:** On a shared node with 128 physical cores, 256 Gbytes RAM.
 In this case you will receive 48 logical cores, 40 GBytes RAM. The amount of cores you ask for does not cover your need for RAM.
 ```default
-#SBATCH  -p shared
-#SBATCH  --ntasks=2
+#SBATCH -N 1
+#SBATCH -p shared
+#SBATCH --ntasks=2
 #SBATCH --mem=40G
 ```

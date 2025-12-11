@@ -89,7 +89,13 @@ For running large time consuming programs, sending the job to the queue system i
   ```
 
   The full list of fields and an explanation for each one of them can be found by using the flag `--helpformat` or by visiting the man page for sstat.
-* To get a view on nodes and partitions (logically-grouped nodes) offered by the cluster:
+
+  To get a summary of resource utilization for a job
+  ```default
+  seff your_job-id
+  ```
+
+  To get a view on nodes and partitions (logically-grouped nodes) offered by the cluster:
   ```default
   sinfo
   ```

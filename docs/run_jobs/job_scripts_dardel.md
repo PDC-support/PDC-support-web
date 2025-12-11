@@ -4,7 +4,7 @@
 
 Follow links to find information about [Dardel compute nodes](job_scheduling.md#dardel-compute-nodes) on Dardel and about [Dardel partitions](job_scheduling.md#dardel-partitions)
 
-!!! note 
+!!! note
     It is advisable to use parameter flags in the **#SBATCH** tags rather than as parameters in **srun**,
     to increase clarity of your scripts.
 
@@ -73,7 +73,7 @@ Below is another example for a hybrid MPI+OpenMP program. This example will plac
 # Number and placement of OpenMP threads
 export OMP_NUM_THREADS=8
 
-# for slurm >22 05
+# For Slurm versions higher than 22.05
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # Run the executable named myexe
@@ -148,18 +148,18 @@ a single node on Dardel.
 # The partition
 #SBATCH -p shared
 
+# Force all cores to be on the same node
+#SBATCH -N 1
+
 # The number of tasks requested
 #SBATCH -n 10
-
-# The number of tasks for each node requested
-#SBATCH --ntasks-per-node=2
 
 # 10 hours wall clock time will be given to this job
 #SBATCH -t 10:00:00
 
 # Run the executable named myexe
 # and write the output into my output file
-srun -n 20 ./myexe > my_output_file
+srun ./myexe > my_output_file
 ```
 
 **Example 5:**
@@ -174,13 +174,16 @@ a single node on Dardel.
 
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH -A naissYYYY X XX
+#SBATCH -A naissYYYY-X-XX
 
 # The name of the script is myjob
 #SBATCH -J myjob
 
 # The partition
 #SBATCH -p shared
+
+# Force all cores to be on the same node
+#SBATCH -N 1
 
 # Number of tasks
 #SBATCH -n 1
@@ -191,7 +194,7 @@ a single node on Dardel.
 # 10 hours wall clock time will be given to this job
 #SBATCH -t 10:00:00
 
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=16
 
 # Run the executable named myexe
 # and write the output into my output file
@@ -219,7 +222,7 @@ Below is a job script example for a job running on a Dardel GPU node.
 
 # Set the allocation to be charged for this job
 # not required if you have set a default allocation
-#SBATCH -A naissYYYY X XX
+#SBATCH -A naissYYYY-X-XX
 
 # The name of the script is myjob
 #SBATCH -J myjob
@@ -234,10 +237,10 @@ Below is a job script example for a job running on a Dardel GPU node.
 #SBATCH --nodes=1
 
 # Number of MPI processes per node
-#SBATCH --ntasks per node=1
+#SBATCH --ntasks-per-node=1
 
 # Load a ROCm module and set the accelerator target
-ml rocm/5.0.2
+ml rocm/6.3.3
 ml craype-accel-amd-gfx90a
 
 # Run the executable named myexe

@@ -94,5 +94,5 @@ For examples of job scripts please see the following pages:
 * [Job script examples](job_scripts_dardel.md)
 * [Job arrays](job_arrays.md)
 * [Short jobs](short_jobs.md)
-  * [Pack short jobs together](short_jobs.md#pack-short-jobs-together)
-  * [Use fewer cores](short_jobs.md#use-fewer-cores)
+* [Pack short jobs together](short_jobs.md#pack-short-jobs-together)
+* [Use fewer cores](short_jobs.md#use-fewer-cores)
