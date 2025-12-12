@@ -1,4 +1,7 @@
 resources:
+  - resource: cpe24.11.gpu
+    versions:
+      - version: 10.4.7
   - resource: cpe24.11
     versions:
       - version: 10.2.7
