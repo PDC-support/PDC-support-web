@@ -6,12 +6,12 @@ The Elk installation contained in this module was built with support for the pro
 To display info on which environment variables are set when loading the module, use
 ```
 ml PDC/<version>
-ml show elk/10.4.9-cpeGNU-24.11
+ml show elk/10.7.8-cpeGNU-24.11
 ```
 To load the Elk module
 ```
 ml PDC/<version>
-ml elk/10.4.9-cpeGNU-24.11
+ml elk/10.7.8-cpeGNU-24.11
 ```
 The species files are found in ``EBROOTELK/species``
 Examples are provided in ``$EBROOTELK/examples``
@@ -41,7 +41,7 @@ Sample job script to queue an Elk job with 16 MPI ranks, and 8 openMP threads
 #SBATCH --cpus-per-task=8
 
 ml PDC/24.11
-ml elk/10.4.9-cpeGNU-24.11
+ml elk/10.7.8-cpeGNU-24.11
 
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 export OMP_NUM_THREADS=8
@@ -65,7 +65,7 @@ A build in your local file space can be done with
 ```bash
 ml PDC/24.11
 ml easybuild-user/4.9.4
-eb elk-10.4.9-cpeGNU-24.11.eb --robot
+eb elk-10.7.8-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
