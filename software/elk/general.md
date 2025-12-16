@@ -68,7 +68,7 @@ ml easybuild-user/4.9.4
 eb elk-10.7.8-cpeGNU-24.11.eb --robot
 ```
 
-See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
 
 ## Species files, example input files, and Elk make.inc file.
 

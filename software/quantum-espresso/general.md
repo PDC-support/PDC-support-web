@@ -98,7 +98,7 @@ ml easybuild-user/4.9.4
 eb quantum-espresso-7.5.0-cpeGNU-24.11.eb --robot
 ```
 
-See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
 
 A build for NVIDIA Grace Hopper nodes can be done with
 

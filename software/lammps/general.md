@@ -49,7 +49,7 @@ ml easybuild-user/4.9.1
 eb lammps-29Aug2024-cpeGNU-23.12.eb --robot
 ```
 
-See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
 
 ## More information
 For more information, refer to the [LAMMPS manual](https://docs.lammps.org/Manual.html).

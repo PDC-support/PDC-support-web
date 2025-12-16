@@ -114,7 +114,7 @@ ml easybuild-user/4.9.4
 eb gromacs-2025.1-cpeGNU-24.11.eb --robot
 ```
 
-See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/support-docs/software_development/easybuild/).
+See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
 
 The builds for AMD GPU nodes are done with the **PrgEnv-amd** toolchain.
 
