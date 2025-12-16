@@ -7,6 +7,7 @@ resources:
       - version: 2024.5-cpeGNU-24.11-plumed-2.9.3
       - version: 2025.1-cpeGNU-24.11
       - version: 2025.2-cp2k
+      - version: 2025.4-cpeGNU-24.11
   - resource: cpe24.11.gpu
     versions:
       - version: 2025.2-gpu
