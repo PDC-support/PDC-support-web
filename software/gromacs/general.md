@@ -18,11 +18,11 @@ ml spider gromacs
 For example, to load the module for GROMACS 2024.2/
 ```
 ml PDC/<version>
-ml gromacs/2025.1-cpeGNU-24.11
+ml gromacs/2025.4-cpeGNU-24.11
 ```
 To see what environment variables are set when loading the module
 ```
-ml gromacs/2025.1-cpeGNU-24.11
+ml gromacs/2025.4-cpeGNU-24.11
 ```
 Preprocessing input files (molecular topology, initial coordinates and
 mdrun parameters) to create a portable run input (.tpr) file can be run
@@ -57,7 +57,7 @@ command! Here is an example script that requests 2 nodes:
 #SBATCH --ntasks-per-node=128
 
 ml PDC/<version>
-ml gromacs/2025.1-cpeGNU-24.11
+ml gromacs/2025.4-cpeGNU-24.11
 
 export OMP_NUM_THREADS=1
 
@@ -71,7 +71,7 @@ To load the GROMACS module for AMD GPUs
 
 ```
 ml PDC/24.11
-ml cp2k/2025.2-cpeGNU-24.11-gpu
+ml cp2k/2025.4-cpeGNU-24.11-gpu
 ```
 
 Below follows an example job script for GROMACS, for running on one Dardel GPU node
@@ -92,7 +92,7 @@ and GCD.**
 #SBATCH --gpus-per-node=8
 
 ml PDC/24.11
-ml gromacs/2025.2-gpu
+ml gromacs/2025.4-gpu
 
 export OMP_NUM_THREADS=1
 export MPICH_GPU_SUPPORT_ENABLED=1
@@ -111,7 +111,7 @@ A build in your local file space can be done with
 ```bash
 ml PDC/24.11
 ml easybuild-user/4.9.4
-eb gromacs-2025.1-cpeGNU-24.11.eb --robot
+eb gromacs-2025.4-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
@@ -120,30 +120,26 @@ The builds for AMD GPU nodes are done with the **PrgEnv-amd** toolchain.
 
 ```bash
 #!/bin/bash
-# Build instructions for GROMACS 2025.2 on Dardel
+# Build instructions for GROMACS 2025.4 on Dardel
 
 # Load the environment
 ml PDC/24.11
 ml craype-accel-amd-gfx90a
-ml swap PrgEnv-cray/8.6.0 PrgEnv-amd/8.6.0
-ml swap amd/6.0.0 amd/6.3.3
+ml PrgEnv-amd/8.6.0
+ml amd/6.3.3
 ml cray-mpich/8.1.31
 ml cray-fftw/3.3.10.9
 ml cray-libsci/24.11.0
 ml cmake/4.0.1
 ml rocm/6.3.3
 ml boost/1.79.0-nompi
+ml adaptivecpp/25.02.0
 
-# GROMACS 2025.2
+# GROMACS 2025.4
 # Download and untar the source code
-wget https://gitlab.com/gromacs/gromacs/-/archive/v2025.2/gromacs-v2025.2.tar.gz
-tar xvf gromacs-v2025.2.tar.gz
-cd gromacs-v2025.2/
-
-# Set AdaptiveCpp environment variables
-export PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/bin:$PATH
-export LIBRARY_PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/lib:$LIBRARY_PATH
-export CPATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/include:$CPATH
+wget https://gitlab.com/gromacs/gromacs/-/archive/v2025.4/gromacs-v2025.4.tar.gz
+tar xvf gromacs-v2025.4.tar.gz
+cd gromacs-v2025.4/
 
 # Configure
 mkdir build
@@ -167,14 +163,10 @@ cmake ../ \
 -DMPI_CXX_COMPILER=CC -DGMX_BLAS_USER=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_amd.so \
 -DGMX_LAPACK_USER=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_amd.so \
 -DCMAKE_{EXE,SHARED}_LINKER_FLAGS=-fuse-ld=ld \
--DCMAKE_INSTALL_PREFIX=/pdc/software/24.11/other/gromacs/2025.2-gpu > BuildGROMACS_CMakeLog.txt 2>&1
+-DCMAKE_INSTALL_PREFIX=/pdc/software/24.11/other/gromacs/2025.4-gpu > BuildGROMACS_CMakeLog.txt 2>&1
 
 # Build and install
 make -j 64 > BuildGROMACS_make.txt 2>&1
+make -j 64 check > BuildGROMACS_check.txt 2>&1
 make install
-
-# Set runtime environment
-export LD_LIBRARY_PATH=/pdc/software/24.11/other/adaptivecpp/25.02.0/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/pdc/software/24.11/other/gromacs/2025.2-gpu/lib:$LD_LIBRARY_PATH
-export PATH=/pdc/software/24.11/other/gromacs/2025.2-gpu/bin:$PATH
 ```
