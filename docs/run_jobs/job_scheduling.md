@@ -114,7 +114,7 @@ The cores or memory that is the largest for the job will dictate what is needed.
 
 | Parameter | Description |
 | --- | --- |
-| `-n [nnodes]` | Allocates nnodes. Set this to 1 in order to force all cores to be on the same node |
+| `-N [nnodes]` | Allocates nnodes. Set this to 1 in order to force all cores to be on the same node |
 | `-n [ntasks]` | Allocates ntasks |
 | `--cpus-per-task=[cores]` | Allocates logical [cores]=ntasks*cpu-per-task. (Default: cpus-per-task=1) |
 | `--mem=[RAM in Mbytes]` | The max amount of RAM allocated for your job |
