@@ -22,8 +22,8 @@ Here is an example of a job script
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 
-module load PDC/23.12
-module load veloxchem/1.0rc3
+module load PDC/24.11
+module load veloxchem/1.0rc4
 
 export OMP_NUM_THREADS=16
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
