@@ -1,7 +1,14 @@
 resources:
+  - resource: cpe24.11.gh
+    versions:
+      - version: 16.3
+  - resource: cpe24.11.gpu
+    versions:
+      - version: 16.3
   - resource: cpe24.11
     versions:
       - version: 15.1
+      - version: 16.3
   - resource: cpe23.12
     versions:
       - version: 14.0
