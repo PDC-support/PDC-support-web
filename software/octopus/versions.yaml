@@ -1,5 +1,5 @@
 resources:
-  - resource: cpe24.11.gh
+  - resource: cpe25.03.gh
     versions:
       - version: 16.3
   - resource: cpe24.11.gpu
