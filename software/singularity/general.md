@@ -354,6 +354,8 @@ srun -n 24 --mpi=pmi2 singularity exec -B /cfs/klemming <sandbox folder> <myexe>
 
 #### Batch job with GPU support
 
+##### AMD GPUS
+
 In case you would like to run on one node with AMD GPUs.
 Be aware that you need a container with software compilated
 using GPU support. Look at our [https://github.com/PDC-support/PDC-SoftwareStack](https://github.com/PDC-support/PDC-SoftwareStack)
@@ -377,4 +379,31 @@ in your image and you can send in a job using…
 # Run the executable named myexe
 ml PDC/<version> singularity
 srun -n 1 singularity exec --rocm -B /cfs/klemming <sandbox folder> <myexe>
+```
+
+##### NVIDIA GPUS
+
+In case you would like to run on one node with NVIDIA GPUs.
+Be aware that you need a container with software compilated
+using GPU support. Look at our [https://github.com/PDC-support/PDC-SoftwareStack](https://github.com/PDC-support/PDC-SoftwareStack)
+for recipes on how to build.
+in your image and you can send in a job using…
+
+```text
+#!/bin/bash -l
+# The -l above is required to get the full environment with modules
+# Set the allocation to be charged for this job
+# not required if you have set a default allocation
+#SBATCH -A 201X-X-XX
+# The name of the script is myjob
+#SBATCH -J myjob
+# Only 1 hour wall clock time will be given to this job
+#SBATCH -t 1:00:00
+# Number of nodes
+#SBATCH --nodes=1
+# Using the GPU partition which is at the moment is under testing
+#SBATCH -p gpugh
+# Run the executable named myexe
+ml PDC/<version> singularity
+srun -n 1 singularity exec --nv -B /cfs/klemming <sandbox folder> <myexe>
 ```
