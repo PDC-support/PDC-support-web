@@ -38,7 +38,7 @@ mpi=crayex
 # If you use a license server
 export CDLMD_LICENSE_FILE=<license-server>
 
-starccm+ -power -mpidriver $mpi -np 256 -arch linux-x86_64-2.28 -batch run  -pio -nbuserdir $LUSTRE_ROOT  ${sim_file}> my_output_file 2>&1
+starccm+ -power -mpidriver $mpi -batchsystem slurm -np 256 -arch linux-x86_64-2.28 -batch run  -pio -nbuserdir $LUSTRE_ROOT  ${sim_file}> my_output_file 2>&1
 
 # If you use POD key, just add the following to the starccm+ command:
 # -podkey <your key> -licpath 1999@flex.cd-adapco.com
