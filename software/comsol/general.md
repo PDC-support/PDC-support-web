@@ -54,8 +54,7 @@ To submit a job on single node (containing 128 cores), you can do so by creating
 #SBATCH -o output_file.o%J
 
 # load comsol module
-# module load PDC
-module add comsol/5.6
+module add comsol/6.4
 
 
 export LM_LICENSE_FILE=<your license server>
