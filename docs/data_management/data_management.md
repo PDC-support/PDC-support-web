@@ -27,8 +27,8 @@ please use the dardel.pdc.kth.se login node for the file transfers.**
 
 | Name              | Type                | Usage                                             |
 |-------------------|---------------------|---------------------------------------------------|
-| dardel.pdc.kth.se | Login node (Dardel) | Submitting jobs and small file transfers          |
-| dardel.pdc.kth.se | Login node (Dardel) | Large transfers and operations on the file system |
+| dardel-ftn01.pdc.kth.se | File transfer node (Dardel) | Submitting jobs and small file transfers          |
+| dardel-ftn01.pdc.kth.se | File transfer node (Dardel) | Large transfers and operations on the file system |
 
 ## PDC environmental variables
 
