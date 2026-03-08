@@ -21,7 +21,7 @@ More information on `rsync` at https://linux.die.net/man/1/rsync
 Standing in a directory on your local computer containing the file `localfile`.
 
 ```default
-rsync <localfile> <username>@dardel.pdc.kth.se:<path>
+rsync <localfile> <username>@dardel-ftn01.pdc.kth.se:<path>
 ```
 
 where `username` is your username at PDC and `path` is the path on klemming. You can copy it to the `Private`
@@ -43,7 +43,7 @@ Standing in a directory on your local computer whereto you want to copy the file
 `/cfs/klemming/home/<1st letter username>/<username>/` you can transfer it using the command:
 
 ```default
-rsync <username>@dardel.pdc.kth.se:/cfs/klemming/scratch/<1st letter username>/<username>/<pdcfile> .
+rsync <username>@dardel-ftn01.pdc.kth.se:/cfs/klemming/scratch/<1st letter username>/<username>/<pdcfile> .
 ```
 
 where `username` is your username at PDC.
@@ -55,7 +55,7 @@ where `username` is your username at PDC.
     then you need to fix your shell configuration files so that they do not produce output.
 
     ```default
-    ssh <username>@dardel.pdc.kth.se /bin/true
+    ssh <username>@dardel-ftn01.pdc.kth.se /bin/true
     ```
 
 For more information about what nodes to use see [Nodes for file operations](data_management.md#nodes-for-file-operations)
@@ -66,7 +66,7 @@ The benefit of user ´rsync´ is that the command has added functionality in cas
 The following command resumes transfer by appending only missing data and see to it that incomplete files are kept.
 
 ```default
-rsync --partial --append-verify <localfile> <username>@dardel.pdc.kth.se:<path>
+rsync --partial --append-verify <localfile> <username>@dardel-ftn01.pdc.kth.se:<path>
 ```
 
 ## Using scp
@@ -82,7 +82,7 @@ make sure you have a working SSH setup on your local machine.
 Standing in a directory on your local computer containing the file `localfile`.
 
 ```default
-scp <localfile> <username>@dardel.pdc.kth.se:<path>
+scp <localfile> <username>@dardel-ftn01.pdc.kth.se:<path>
 ```
 
 where `username` is your username at PDC and `path` is the path on klemming. You can copy it to the `Private`
@@ -99,7 +99,7 @@ Standing in a directory on your local computer whereto you want to copy the file
 `/cfs/klemming/home/<1st letter username>/<username>/` you can transfer it using the command:
 
 ```default
-scp <username>@dardel.pdc.kth.se:/cfs/klemming/scratch/<1st letter username>/<username>/<pdcfile> .
+scp <username>@dardel-ftn01.pdc.kth.se:/cfs/klemming/scratch/<1st letter username>/<username>/<pdcfile> .
 ```
 
 where `username` is your username at PDC.
@@ -111,7 +111,7 @@ where `username` is your username at PDC.
     then you need to fix your shell configuration files so that they do not produce output.
 
     ```default
-    ssh <username>@dardel.pdc.kth.se /bin/true
+    ssh <username>@dardel-ftn01.pdc.kth.se /bin/true
     ```
 
 For more information about what nodes to use see [Nodes for file operations](data_management.md#nodes-for-file-operations)
@@ -120,7 +120,7 @@ For more information about what nodes to use see [Nodes for file operations](dat
 ### Using scp psftp from Windows
 
 If you’re using *PuTTY* to login to PDC clusters, you can use **PSFTP** or **PSCP** that follows the PuTTY installation.
-To use **PSCP**, you need a saved session which is used for login on Dardel. As an example, save the session with the name *dardel* for dardel.pdc.kth.se
+To use **PSCP**, you need a saved session which is used for login on Dardel file transfer node. As an example, save the session with the name *dardelftn* for dardel-ftn01.pdc.kth.se
 
 #### Using pscp
 
@@ -131,7 +131,7 @@ The syntax is similar to scp (i.e. -r for recursive etc).
 To transfer a file from your local computer to Lustre (if you have saved the file transfer session in PuTTY as *dardel*)
 
 ```default
-"C:\Program Files\PuTTY\pscp.exe" -load dardel C:\<file to transfer> <username>@dardel.pdc.kth.se:/cfs/klemming/home/<1st letter username>/<username>
+"C:\Program Files\PuTTY\pscp.exe" -load dardel C:\<file to transfer> <username>@dardel-ftn01.pdc.kth.se:/cfs/klemming/home/<1st letter username>/<username>
 ```
 
 #### Using psftp
