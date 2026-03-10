@@ -248,7 +248,7 @@ ml apptainer (or singularity)
 After this run command
 
 ```text
-create_container <recipe name>
+build_container <recipe name>
 ```
 
 Use parameter `--help`to get more information
