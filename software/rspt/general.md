@@ -5,10 +5,10 @@ The Relativistic Spin Polarized tookit (RSPt) is a code for electronic structure
 To display info on which environment variables are set when loading the module, use
 ```
 ml PDC/<version>
-ml show rspt/20250228
+ml show rspt/20251111
 To load the RSPt module
 ml PDC/<version>
-ml rspt/20250228
+ml rspt/20251111
 ```
 The binaries are found in the ``$RSPT_HOME/bin`` directory.
 Examples and tests are provided in ``$RSPT_EXAMPLES``.
@@ -41,7 +41,7 @@ Sample job script
 #SBATCH -n 256
 
 ml PDC/<version>
-ml rspt/20250228-cpeGNU-24.11
+ml rspt/20251111-cpeGNU-24.11
 
 echo "Script initiated at `date` on `hostname`"
 
@@ -60,7 +60,7 @@ A build in your local file space can be done with
 ```bash
 ml PDC/24.11
 ml easybuild-user/4.9.4
-eb rspt-20250228-cpeGNU-24.11.eb --robot
+eb rspt-20251111-cpeGNU-24.11.eb --robot
 ```
 
 See also [Installing software using EasyBuild](https://support.pdc.kth.se/doc/software_development/easybuild/).
