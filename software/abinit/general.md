@@ -7,7 +7,7 @@ To use this module do
 
 ```
 ml PDC/<version>
-ml abinit/10.4.7-cpeGNU-24.11
+ml abinit/10.6.5-cpeGNU-24.11
 ```
 
 Below follows an example job script for ABINIT.
@@ -33,7 +33,7 @@ Below follows an example job script for ABINIT.
 #SBATCH --ntasks-per-node=128
 
 ml PDC/24.11
-ml abinit/10.4.7-cpeGNU-24.11
+ml abinit/10.6.5-cpeGNU-24.11
 
 echo "Script initiated at `date` on `hostname`"
 
@@ -78,7 +78,7 @@ export OMP_PROC_BIND=false
 export MPICH_GPU_SUPPORT_ENABLED=1
 
 ml PDC/24.11
-ml abinit/10.4.7-cpeGNU-24.11-gpu
+ml abinit/10.6.5-cpeGNU-24.11-gpu
 
 echo "Script initiated at `date` on `hostname`"
 
@@ -94,7 +94,7 @@ Assuming the script is named jobscriptABINIT.sh, it can be submitted using
 sbatch jobscriptABINIT.sh
 ```
 
-Quantum Espresso is also available as builds for the NVIDIA Grace Hopper nodes. Here is an example job script for running on two nodes, with one task per GPU.
+ABINIT is also available as builds for the NVIDIA Grace Hopper nodes. Here is an example job script for running on two nodes, with one task per GPU.
 
 ```bash
 #!/bin/bash
@@ -109,7 +109,7 @@ Quantum Espresso is also available as builds for the NVIDIA Grace Hopper nodes. 
 
 # Run time modules and executable paths
 ml PDC/25.03
-ml abinit/10.4.7
+ml abinit/10.6.5
 
 # Runtime environment
 export MPICH_GPU_SUPPORT_ENABLED=1
@@ -134,7 +134,7 @@ A build in your local file space can be done with
 ```bash
 ml PDC/24.11
 ml easybuild-user/4.9.4
-eb abinit-10.4.7-cpeGNU-24.11-gpu.eb --robot
+eb abinit-10.6.5-cpeGNU-24.11-gpu.eb --robot
 ```
 
 A build for NVIDIA Grace Hopper nodes can be done with
@@ -143,9 +143,9 @@ A build for NVIDIA Grace Hopper nodes can be done with
 # Build instructions for ABINIT on Dardel Grace Hopper nodes
 
 # Download and untar the source code
-wget wget https://forge.abinit.org/abinit-10.4.7.tar.gz
-tar xf abinit-10.4.7.tar.gz
-cd abinit-10.4.7
+wget wget https://forge.abinit.org/abinit-10.6.5.tar.gz
+tar xf abinit-10.6.5.tar.gz
+cd abinit-10.6.5
 
 # Load the environment, GNU and CUDA toolchain
 ml PrgEnv-gnu
@@ -177,7 +177,7 @@ export WANNIER90_LIBS="-L/pdc/software/25.03/other/wannier90/3.1.0/lib -lwannier
     --with-cuda=/opt/nvidia/hpc_sdk/Linux_aarch64/24.11/cuda/12.6 \
     --with-libxc=/pdc/software/25.03/other/libxc/7.0.0/ \
     --with-wannier90=/pdc/software/25.03/other/wannier90/3.1.0/ \
-    --prefix=/pdc/software/25.03/other/abinit/10.4.7
+    --prefix=/pdc/software/25.03/other/abinit/10.6.5
 
 # Build and install
 make -j 72
