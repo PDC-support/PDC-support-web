@@ -32,6 +32,7 @@ Where **N** is the GPU number.
 If this is omitted ALL available GPUs will automatically be used.
 
 On Dardel
+
 | N GPUs | Value |
 |---|---|
 | 1 | 0 |
