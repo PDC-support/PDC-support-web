@@ -1,4 +1,4 @@
-NVIDIA Parabricks is a high-performance software suite designed to accelerate genomic data analysis. It provides GPU optimized versions of widely used bioinformatics tools, allowing researchers to process sequencing data much faster compared to traditional CPU based workflows.
+NVIDIA Parabricks is a high-performance software suite designed to accelerate genomic data analysis. It provides GPU optimized versions of widely used bioinformatics tools, allowing researchers to process sequencing data much faster compared to traditional CPU based workflows. More information at https://docs.nvidia.com/clara/parabricks/latest/index.html
 
 Many common bioinformatics tools such as those used for alignment, variant calling, and data preprocessing have been adapted within Parabricks to run efficiently on NVIDIA GPUs. By leveraging the parallel processing power of GPUs, these tools can achieve significant speedups while maintaining the same results as their standard implementations.
 
@@ -32,6 +32,8 @@ To test the GPUs...
 
 ## How to run
 
+Detailed information for parabricks are available at
+https://docs.nvidia.com/clara/parabricks/latest/gettingstarted/gettingthesoftware.html#running-nvidia-parabricks
 There is a test dataset available which you can find at `$PDC_SHUB/parabricks_sample`
 
 Here is a quick example that you can run on 1 gpu
