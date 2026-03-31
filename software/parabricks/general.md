@@ -34,11 +34,11 @@ To test the GPUs...
 
 Detailed information for parabricks are available at
 https://docs.nvidia.com/clara/parabricks/latest/gettingstarted/gettingthesoftware.html#running-nvidia-parabricks
-There is a test dataset available which you can find at `$PDC_SHUB/parabricks_sample`
+There is a test dataset available which you can find at `/sw/data/parabricks_sample`
 
 Here is a quick example that you can run on 1 gpu
 ```
-singularity exec --nv -B $PDC_SHUB/parabricks_sample:/data \
+singularity exec --nv -B /sw/data/parabricks_sample:/data \
     $PDC_SHUB/clara-parabricks_4.7.0-1 \
     pbrun fq2bam \
     --ref /data/Ref/Homo_sapiens_assembly38.fasta \
@@ -67,7 +67,7 @@ here is the same example using all GPUs on an exclusive node
 ml PDC
 ml singularity
 ml nvidia
-srun -n 1 singularity exec --nv -B $PDC_SHUB/parabricks_sample:/data \
+srun -n 1 singularity exec --nv -B /sw/data/parabricks_sample:/data \
     $PDC_SHUB/clara-parabricks_4.7.0-1 \
     pbrun fq2bam \
     --ref /data/Ref/Homo_sapiens_assembly38.fasta \
