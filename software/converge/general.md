@@ -44,7 +44,7 @@ A sample script for running CONVERGE on Dardel called converge_run.sh is shown b
 #
 export RLM_LICENSE=<your license server>
 # Load the converge module
-module load PDC
+
 module load converge/<version>
 
 
