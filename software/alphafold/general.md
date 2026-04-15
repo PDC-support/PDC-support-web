@@ -27,7 +27,7 @@ To test the GPUs...
 ### Setting the GPUs
 
 Alphafold can use 1 or more GPUs for its calculation.
-These can be set with the variable `XLA_VISIBLE_DEVICES=<N> ...`
+These can be set with the variable `CUDA_VISIBLE_DEVICES=<N> ...`
 Where **N** is the GPU number.
 If this is omitted ALL available GPUs will automatically be used.
 
@@ -79,7 +79,8 @@ here is the same example using all GPUs on an exclusive node
 ml PDC
 ml singularity
 ml nvidia
-CUDA_VISIBLE_DEVICES=0,1,2,3 singularity exec --nv -B \
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+srun -n 1 singularity exec --nv -B \
     [DATA FOLDER]:/input \
     -B [DATA FOLDER]:/output \
     $PDC_SHUB/alphafold3 python3 /opt/alphafold3/run_alphafold.py \
