@@ -1,5 +1,9 @@
 # NAISS support documentation
+
 Support documentation for NAISS.
+
+- [View the nicely rendered website here](https://support.pdc.kth.se/doc/)
+
 These pages are written using Hugo, with the exception
 of the support/software pages which are written in mkDocs.
 Both tools however enable to publish material in MarkDown.
