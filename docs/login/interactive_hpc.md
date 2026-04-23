@@ -166,7 +166,7 @@ rm ~/.local/share/desktop-directories/*
    You current session and applications will continue to run.
 1. I am getting license error, what should I do?
 
-   We currently have 10 ThinLinc client licenses. This means 11th user connecting to ThinLinc will get License error. You can reconnect after sometime to see if license becomes available. If this happens quiet often, you can send in a support request for us to consider increasing ThinLinc client licenses.
+   We currently have 30 ThinLinc client licenses. This means 11th user connecting to ThinLinc will get License error. You can reconnect after sometime to see if license becomes available. If this happens quiet often, you can send in a support request for us to consider increasing ThinLinc client licenses.
 1. How to use custom anaconda environment for Jupyter Notebooks with gfxlauncher?
 
    This is currently work in progress and will be implemented soon.
