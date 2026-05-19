@@ -133,7 +133,7 @@ ECDSA key fingerprint is MD5:8c:62:70:4c:b8:f2:c4:ab:14:43:b7:31:ba:c3:c9:52
 
 ## Users who do not have a SUPR account
 
-For users without SUPR account currently only Kerberos login is officially supported. If you are in SUPR, but your SUPR account is not properly linked to PDC, please contact PDC support ([support@pdc.kth.se](mailto:support@pdc.kth.se)) along with information about your PDC username and the email with which your SUPR account is registered. 
+For users without SUPR account currently only Kerberos login is officially supported. If you are in SUPR, but your SUPR account is not properly linked to PDC, please contact PDC support using the link [https://supr.naiss.se/support/?centre_resource=c7](https://supr.naiss.se/support/?centre_resource=c7) along with information about your PDC username and the email with which your SUPR account is registered.
 
 ## Configuring ssh keys and kerberos login
 

@@ -8,7 +8,7 @@ In order to use ANSYS CFX at PDC you need to:
 Use command
 module load PDC
 module avail cfx
-to list all available versions and make sure that the correct version is loaded in the job script. If there is no same (compatible) versions, please contact PDC (support@pdc.kth.se).
+to list all available versions and make sure that the correct version is loaded in the job script. If there is no same (compatible) versions, please contact PDC using the link [https://supr.naiss.se/support/?centre_resource=c7](https://supr.naiss.se/support/?centre_resource=c7).
 For more details, look at Ansys web page:
 http://www.ansys.com/
 

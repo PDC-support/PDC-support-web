@@ -22,8 +22,8 @@ non-[SUPR](https://supr.naiss.se) project, you don’t have to send in a proposa
   * Do not forget to specify the course code and the name of the course responsible.
     You also need to make sure you are included in the participant list managed by your course responsible.
   * If you are a researcher participating in a project not in [SUPR](https://supr.naiss.se), you should specify the project name.
-* If you already have a PDC account, please send us a mail at [support@pdc.kth.se](mailto:support@pdc.kth.se)
-  and include your…
+* If you already have a PDC account, please contact support using the link [https://supr.naiss.se/support/?centre_resource=c7](https://supr.naiss.se/support/?centre_resource=c7)
+  and include your
   1. Username at PDC
   1. The code for the course(project you are participating in.
      You also need to make sure you are included in the participant list managed by your course responsible or Principal Investigator.

@@ -11,7 +11,7 @@ Use the  commands
 ```
 module avail fluent
 ```
-to list all available versions and make sure that the correct version is loaded in the job script. If the version using which the .cas file was created can't be found in the list of installed versions, please contact PDC (support@pdc.kth.se).
+to list all available versions and make sure that the correct version is loaded in the job script. If the version using which the .cas file was created can't be found in the list of installed versions, please contact PDC support using the link [https://supr.naiss.se/support/?centre_resource=c7](https://supr.naiss.se/support/?centre_resource=c7).
 
 To load a specific version of the fluent module, the following command can be used
 

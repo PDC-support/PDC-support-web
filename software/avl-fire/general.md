@@ -15,7 +15,7 @@ http://www.avl.com
 
 ## How to use
 
-On Lindgren to use Fire then cluster compatability mode (CCM) must be used. Note your account must be specially enabled to use CCM on Lindgren. Contact support@pdc.kth.se if you need your account to be able to use CCM.
+On Lindgren to use Fire then cluster compatability mode (CCM) must be used. Note your account must be specially enabled to use CCM on Lindgren. Contact PDC support using the link [https://supr.naiss.se/support/?centre_resource=c7](https://supr.naiss.se/support/?centre_resource=c7) if you need your account to be able to use CCM.
 
 # Running interactively on Lindgren
 It is not possible to use the interactive nodes to run CCM jobs. However it is possible to reserve some nodes in CCM mode and use them interactively. To do this use. If no nodes are available you will join the batch queue until they become available.
