@@ -7,7 +7,7 @@ PDC Support will have limited availability during the summer and Christmas perio
 Please visit the PDC main page for more details.
 
 [Quick Start](basics/quickstart.md){: .md-button } [How to apply for an allocation](getting_access/get_access.md#apply-for-a-new-time-allocation-via-naiss){: .md-button } [How to apply for a PDC account](getting_access/get_access.md#applying-for-an-account){: .md-button }
-[How to login](login/ssh_login.md){: .md-button }[Software Development Assistance (Beta)](getting_access/dev_support.md){: .md-button }
+[How to login](login/ssh_login.md){: .md-button }[Shared material](https://drive.google.com/drive/folders/0B3KTk17tdgqDZXlhTTU1VVRyZ2c?resourcekey=0-69XkZxbY7dH1W_XX8V-H2A&usp=sharing){: .md-button }[Software Development Assistance (Beta)](getting_access/dev_support.md){: .md-button }
 ---
 
 [Site Map](site_map.md){: .md-button } [FAQ](faq/faq.md){: .md-button } [Contact support](contact/contact_support.md){: .md-button } 
