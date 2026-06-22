@@ -1,4 +1,10 @@
 resources:
+  - resource: cpe26.03-gpu
+    versions:
+      - version: 2026.02.001
+  - resource: cpe26.03
+    versions:
+      - version: 2026.02.001
   - resource: cpe24.11
     versions:
       - version: 2025.05.001

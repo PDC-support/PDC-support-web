@@ -11,3 +11,9 @@ resources:
   - resource: cpe24.11
     versions:
       - version: 2.6.0
+  - resource: cpe26.03
+    versions:
+      - version: 2.6.0-lmax-5
+  - resource: cpe26.03
+    versions:
+      - version: 2.6.0-lmax-6

@@ -1,4 +1,7 @@
 resources:
+  - resource: cpe26.03
+    versions:
+      - version: 22Jul2025_update4
   - resource: cpe24.11
     versions:
       - version: 4Feb2025

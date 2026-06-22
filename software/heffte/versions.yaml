@@ -1,10 +1,19 @@
 resources:
-  - resource: cpe23.03.gpu
+  - resource: cpe26.03.gpu
     versions:
-      - version: 2.4.0
-  - resource: cpe23.12.gpu
+      - version: 2.4.1
+  - resource: cpe26.03
     versions:
-      - version: 2.4.0
+      - version: 2.4.1
+  - resource: cpe24.11.gpu
+    versions:
+      - version: 2.4.1
   - resource: cpe24.11
     versions:
       - version: 2.4.1
+  - resource: cpe23.12.gpu
+    versions:
+      - version: 2.4.0
+  - resource: cpe23.03.gpu
+    versions:
+      - version: 2.4.0

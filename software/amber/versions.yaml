@@ -28,6 +28,15 @@ resources:
     versions:
       - version: 22
       - version: 24
+  - resource: cpe24.11.gpu
+    versions:
+      - version: 24
   - resource: cpe24.11
+    versions:
+      - version: 24
+  - resource: cpe26.03.gpu
+    versions:
+      - version: 24
+  - resource: cpe26.03
     versions:
       - version: 24

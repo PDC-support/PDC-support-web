@@ -3,9 +3,15 @@ resources:
     versions:
       - version: 10.4.7
       - version: 10.6.5
+  - resource: cpe26.03.gpu
+    versions:
+      - version: 10.6.7
   - resource: cpe24.11.gpu
     versions:
       - version: 10.4.7
+  - resource: cpe26.03
+    versions:
+      - version: 10.6.7
   - resource: cpe24.11
     versions:
       - version: 10.2.7
