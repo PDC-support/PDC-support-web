@@ -165,7 +165,7 @@ The build is done within the PrgEnv-cray environment using the Cray Fortran comp
 ```text
 # Check which compiler the compiler wrapper is pointing to
 ftn --version
-# returns Cray Fortran : Version 17.0.0
+# returns Cray Fortran : Version 21.0.0
 
 # Compile the code
 ftn hello_world_mpi.f90 -o hello_world_mpi.x
@@ -194,26 +194,26 @@ cd fftw_test
 wget https://people.math.sc.edu/Burkardt/c_src/fftw/fftw_test.c
 
 # Change from the PrgEnv cray to the PrgEnv gnu environment
-ml PDC/24.11
-ml cpeGNU/24.11
-#Lmod is automatically replacing "cpeGNU/24.11" with "PrgEnv-gnu/8.5.0".
-#Lmod is automatically replacing "cce/17.0.0" with "gcc-native/12.3".
-#Lmod is automatically replacing "PrgEnv-cray/8.5.0" with "cpeGNU/24.11".
+ml PDC/26.03
+ml cpeGNU/26.03
+#Lmod is automatically replacing "cpeGNU/24.11" with "PrgEnv-gnu/8.7.0".
+#Lmod is automatically replacing "cce/21.0.0" with "gcc-native/14".
+#Lmod is automatically replacing "PrgEnv-cray/8.7.0" with "cpeGNU/26.03".
 #Due to MODULEPATH changes, the following have been reloaded:
-#  1) cray-libsci/24.11.0     2) cray-mpich/8.1.28
+#  1) cray-libsci/26.03.0     2) cray-mpich/9.1.0
 
 # Check which compiler the cc compiler wrapper is pointing to
 cc --version
-# gcc-12 (SUSE Linux) 12.3.0
+# gcc-14 (SUSE Linux) 14.3.0
 
 ml
-# The listing reveals that cray-libsci/24.11.0 is already loaded
+# The listing reveals that cray-libsci/26.03.0 is already loaded
 
 # In addition  the program needs linking also to a Fourier transform library
 ml spider fftw
 # gives a listing of available Fourier transform libraries
 # Load a recent version of the Cray FFTW library with
-ml cray-fftw/3.3.10.7
+ml cray-fftw/3.3.10.11
 
 # Build the code with
 cc fftw_test.c -o fftw_test.x
@@ -227,29 +227,29 @@ srun -n 1 ./fftw_test.x
 
 Having loaded the cray-fftw module, no additional linking flag(s) was needed for the **cc** compiler wrapper.
 
-**Example 3:** Build a program with the EasyBuild cpeGNU/21.09 toolchain
+**Example 3:** Build a program with the EasyBuild cpeGNU/26.03 toolchain
 
 ```text
 # Load an EasyBuild user module
-ml PDC/24.11
+ml PDC/26.03
 ml easybuild-user
 
 # Look for a recipe for the Libxc library
 eb -S libxc
 # Returns a list of available EasyBuild easyconfig files
-# Choose an easyconfig file for the cpeGNU/24.11 toolchain
+# Choose an easyconfig file for the cpeGNU/26.03 toolchain
 
 # Make a dry run
-eb libxc-7.0.0-cpeGNU-24.11.eb --robot --dry-run
+eb libxc-7.0.0-cpeGNU-26.03.eb --robot --dry-run
 
 # Check if dry run looks reasonable  Then proceed to build with
-eb libxc-7.0.0-cpeGNU-24.11.eb --robot
+eb libxc-7.0.0-cpeGNU-26.03.eb --robot
 
 # The program is now locally installed in the user's
 # ~/.local/easybuild directory and can be loaded with
-ml PDC/24.11
+ml PDC/26.03
 ml easybuild-user
-ml libxc/7.0.0-cpeGNU-24.11
+ml libxc/7.0.0-cpeGNU-26.03
 ```
 
 ## How to use EasyBuild
@@ -259,7 +259,7 @@ several **easyconfig** software recipes are available via the command line.
 In order to use EasyBuild in your local folder
 
 ```text
-ml PDC/24.11
+ml PDC/26.03
 ml easybuild-user
 ```
 
@@ -341,33 +341,33 @@ The example calculation is a density functional theory (DFT) simulation of the p
 We activate the ABINIT software module with
 
 ```text
-ml PDC/24.11
-ml abinit/10.2.7-cpeGNU-24.11
+ml PDC/26.03
+ml abinit/10.6.7-cpeGNU-26.03
 ```
 
 In order to learn more about what environment variables were set by the *ml* command
 
 ```text
-ml show abinit/10.2.7-cpeGNU-24.11
+ml show abinit/10.6.7-cpeGNU-26.03
 # which reveals that
-# /pdc/software/24.11/eb/software/abinit/10.2.7-cpeGNU-24.11/bin
+# /pdc/software/26.03/eb/software/abinit/10.6.7-cpeGNU-26.03/bin
 # was appended to the PATH
 ```
 
 In order to set up the simulation for SrVO3 we need an *abi* input file and
 a set of pseudopotentials for the chemical elements. These are contained in
-the ABINIT 9.10.3 release
+the ABINIT 10.6.7 release
 
-Download and extract the ABINIT 9.10.3 release
+Download and extract the ABINIT 10.6.7 release
 
 ```text
 mkdir ABINIT
 cd ABINIT
-wget https://www.abinit.org/sites/default/files/packages/abinit-9.10.3.tar.gz
-tar xf abinit-9.10.3.tar.gz
+wget https://www.abinit.org/sites/default/files/packages/abinit-10.6.7.tar.gz
+tar xf abinit-10.6.7.tar.gz
 # where the files and directories needed for this example are
-abinit-9.10.3/tests/tutoparal/Input/tdmft_1.abi
-abinit-9.10.3/tests/Psps_for_tests/
+abinit-10.6.7/tests/tutoparal/Input/tdmft_1.abi
+abinit-10.6.7/tests/Psps_for_tests/
 ```
 
 In order to run the calculation as a batch job on two nodes, prepare a *jobscriptabinit.sh*
@@ -389,8 +389,8 @@ should be the path to the pseudopotentials.
 # number of MPI processes per node
 #SBATCH --ntasks-per-node=128
 
-ml PDC/24.11
-ml abinit/10.2.7-cpeGNU-24.11
+ml PDC/26.03
+ml abinit/10.6.7-cpeGNU-26.03
 
 export ABI_PSPDIR=<Psps_for_tests>
 
