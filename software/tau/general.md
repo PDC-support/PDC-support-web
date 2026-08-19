@@ -1,6 +1,6 @@
 The University of Oregon’s TAU is an open-source portable profiling and tracing toolkit for the performance analysis of parallel programs written in Fortran, C, C++, UPC, Java, Python and other languages. The instrumentation of programs can be done by binary code rewriting, manual compiler directives, or automatic source code transformation. TAU can support many parallel programming interfaces, including MPI, OpenMP, pthreads, and ROCm. TAU includes paraprof which is a profile visualization tool, and generated execution traces can be displayed by the Vampir, Paraver or JumpShot (included) visualization tools.
 
-[https://www.cs.uoregon.edu/research/tau/docs.phpx](https://www.cs.uoregon.edu/research/tau/docs.phpx)
+[https://www.cs.uoregon.edu/research/tau/docs.php](https://www.cs.uoregon.edu/research/tau/docs.php)
 
 
 ## How to use

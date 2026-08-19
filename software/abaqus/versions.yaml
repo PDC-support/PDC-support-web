@@ -5,6 +5,13 @@ resources:
       - version: 2024
       - version: 2021
       - version: 2019
+
+  - resource: cpe26.03
+    versions:
+      - version: 2025
+      - version: 2024
+      - version: 2021
+      - version: 2019
   
   - resource: zorn
     versions:

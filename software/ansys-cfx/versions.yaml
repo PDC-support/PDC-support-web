@@ -2,6 +2,11 @@ resources:
   - resource: cpe21.11
     versions:
       - version: 21.2
+
+  - resource: cpe26.03
+    versions:
+      - version: 26.1
+      - version: 24.2
   - resource: crayos7
     versions:
       - version: 19.1
