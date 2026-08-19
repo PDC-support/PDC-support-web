@@ -1,4 +1,13 @@
 resources:
+  - resource: cpe26.03
+    versions:
+      - version: 6.6.0-vanilla
+      - version: 6.5.1-vanilla
+      - version: 6.5.1-vanilla-xy
+      - version: 6.4.3-vanilla
+      - version: 6.4.3-vanilla-xy
+      - version: 6.4.3-wannier90
+      - version: 5.4.4-vanilla
   - resource: cpe24.11
     versions:
       - version: 6.6.0-vanilla

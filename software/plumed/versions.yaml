@@ -30,4 +30,8 @@ resources:
     versions:
       - version: 2.9.2
       - version: 2.9.3
+  - resource: cpe26.03
+    versions:
+      - version: 2.9.3
+      - version: 2.10.0
       
