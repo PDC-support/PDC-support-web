@@ -5,10 +5,10 @@
 ## The Cray Parallel Environment
 
 Programs on Dardel are installed using a specific Cray Parallel Environment (CPE). On Dardel's Grace Hopper nodes, the default
-version of the Cray Parallel Environment is currently 25.03. To make available applications that have been built under CPE/25.03, load the PDC/25.03 module
+version of the Cray Parallel Environment is currently 26.03. To make available applications that have been built under CPE/26.03, load the PDC/26.03 module
 
 ```text
-ml PDC/25.03
+ml PDC/26.03
 ```
 
 ## The NVIDIA CUDA ToolKit and the NVIDIA HPC SDK
@@ -37,9 +37,9 @@ In general, applications can be built using multiple compilers for the different
 
 ```text
 ml PrgEnv-gnu
-ml gcc-native/13.2
-ml cudatoolkit/24.11_12.6
-ml cray-fftw/3.3.10.10
+ml gcc-native/14
+ml cudatoolkit/25.9_13.0
+ml cray-fftw/3.3.10.11
 ml cmake/4.1.2
 ```
 

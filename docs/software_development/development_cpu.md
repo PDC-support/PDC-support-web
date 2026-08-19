@@ -92,7 +92,7 @@ The build is done within the PrgEnv-cray environment using the Cray Fortran comp
 ```text
 # Check which compiler the compiler wrapper is pointing to
 ftn --version
-# returns Cray Fortran   Version 17 0 0
+# returns Cray Fortran   Version 21.0.0
 
 # Compile the code
 ftn hello_world_mpi.f90 -o hello_world_mpi.x
@@ -121,26 +121,26 @@ cd fftw_test
 wget https://people.math.sc.edu/Burkardt/c_src/fftw/fftw_test.c
 
 # Change from the PrgEnv cray to the PrgEnv gnu environment
-ml PDC/24.11
-ml cpeGNU/24.11
-# Lmod is automatically replacing "cpeGNU/24.11" with "PrgEnv-gnu/8.5.0"
-# Lmod is automatically replacing "cce/17.0.0" with "gcc/12.3"
-# Lmod is automatically replacing "PrgEnv cray 8 5 0" with "cpeGNU/24.11"
+ml PDC/26.03
+ml cpeGNU/26.03
+# Lmod is automatically replacing "cpeGNU/26.03" with "PrgEnv-gnu/8.7.0"
+# Lmod is automatically replacing "cce/21.0.0" with "gcc/14"
+# Lmod is automatically replacing "PrgEnv-cray/8.7.0" with "cpeGNU/26.03"
 # Due to MODULEPATH changes  the following have been reloaded
-# 1  cray-libsci/24.11.0    2  cray-mpich/8.1.28
+# 1  cray-libsci/26.03.0    2  cray-mpich/9.1.0
 
 # Check which compiler the cc compiler wrapper is pointing to
 cc --version
-gcc-12 (SUSE Linux) 12.3.0
+gcc-14 (SUSE Linux) 14.3.0
 
 ml list
-# The listing reveals that cray-libsci/24.11.0 is already loaded
+# The listing reveals that cray-libsci/26.03.0 is already loaded
 
 # In addition  the program needs linking also to a Fourier transform library
 ml spider fftw
 # gives a listing of available Fourier transform libraries
 # Load a recent version of the Cray FFTW library with
-module add cray-fftw/3.3.10.6
+ml cray-fftw/3.3.10.11
 
 # Build the code with
 cc fftw_test.c -o fftw_test.x
@@ -154,27 +154,27 @@ srun -n 1 ./fftw_test.x
 
 Having loaded the cray-fftw module, no additional linking flag(s) was needed for the **cc** compiler wrapper.
 
-**Example 3:** Build a program with the EasyBuild cpeGNU/24.11 toolchain
+**Example 3:** Build a program with the EasyBuild cpeGNU/26.03 toolchain
 
 ```text
 # Load an EasyBuild user module
-ml PDC/24.11
+ml PDC/26.03
 ml easybuild-user
 
 # Look for a recipe for the Libxc library
 eb -S Libxc
 # Returns a list of available EasyBuild easyconfig files
-# Choose an easyconfig file for the cpeGNU 24.11 toolchain
+# Choose an easyconfig file for the cpeGNU 26.03 toolchain
 
 # Make a dry run
-eb libxc-7.0.0-cpeGNU-24.11.eb --robot --dry-run
+eb libxc-7.0.0-cpeGNU-26.03.eb --robot --dry-run
 
 # Check if dry run looks reasonable  Then proceed to build with
-eb libxc-7.0.0-cpeGNU-24.11.eb --robot
+eb libxc-7.0.0-cpeGNU-26.03.eb --robot
 
 # The program is now locally installed in the user s
 # ~  local easybuild directory and can be loaded with
-ml PDC/24.11
+ml PDC/26.03
 ml easybuild-user
-ml libxc-7.0.0-cpeGNU-24.11.eb
+ml libxc-7.0.0-cpeGNU-26.03.eb
 ```
