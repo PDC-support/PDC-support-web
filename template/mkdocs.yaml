@@ -49,6 +49,7 @@ nav:
     - Job Statistics: run_jobs/job_statistics.md
   - Data Management: 
     - Data Management: data_management/data_management.md
+    - Data Migration: data_management/data_migration.md
     - Klemming: data_management/klemming.md
     - Swestore: data_management/file_transfer_swestore-dcache.md
     - File transfer: data_management/file_transfer.md
