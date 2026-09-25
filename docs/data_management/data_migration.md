@@ -12,7 +12,7 @@ The options for what the project wants NAISS to transfer are:
 
 Each project can only request one data transfer.
 
-Data will be moved to the `from-dardel subdirectory of your Arrhenius project storage directory, e.g `/cfs/klemming/projects/supr/DIRECTORYNAME` on Dardel will be moved to `/nobackup/proj/disk/DIRECTORYNAME/from-dardel`. You can then move the data from `from-dardel` to another location in the project storage directory tree, or leave it there.
+Data will be moved to the `from-dardel` subdirectory of your Arrhenius project storage directory, e.g `/cfs/klemming/projects/supr/DIRECTORYNAME` on Dardel will be moved to `/nobackup/proj/disk/DIRECTORYNAME/from-dardel`. You can then move the data from `from-dardel` to another location in the project storage directory tree, or leave it there.
 
 Since most projects will get a smaller storage allocation on Arrhenius, most projects will need to remove or move data before the data can be transferred.
 It is the project's responsibility to make sure that the data you request a transfer for will fit into your storage allocation on Arrhenius.
