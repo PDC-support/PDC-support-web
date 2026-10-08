@@ -1,7 +1,10 @@
 # Data migration
+Since Dardel will cease to be a NAISS resource at the end of this year, the time has now come to start the data migration of Dardel to Arrhenius. The move of the Dardel data starts in October, and lasts until the end of this year.
+
+## Procedure
 For the data migration from Dardel, a similar procedure will be followed as for the data migration from Tetralith.
 
-The PI (or another person the PI delegates this task to) can request a data transfer from NAISS using the command `storagemigrate` on Dardel. You will then be asked to provide the "what" and "when" for the data transfer. You can change or cancel your request by simply re-running `storagemigrate` later.
+The PI (or another person the PI delegates this task to) can request a data transfer from NAISS using the command `storagemigrate` on Dardel. You will then be asked to provide the "what" and "when" for the data transfer. The last possible start date to request for a data transfer is 2026-12-17. You can change or cancel your request by simply re-running `storagemigrate` later.
 
 The options for what the project wants NAISS to transfer are:
 
@@ -18,6 +21,6 @@ Since most projects will get a smaller storage allocation on Arrhenius, most pro
 It is the project's responsibility to make sure that the data you request a transfer for will fit into your storage allocation on Arrhenius.
 If the data you requested a transfer for will not fit into your storage allocation on Arrhenius the transfer may fail or you may end up being over quota on Arrhenius.
 
-When the data transfer begins, the data becomes inaccessible on Dardel. When the data transfer is complete, the data will become accessible on Arrhenius. I.e you will never see partial data anywhere and you will not be able to access the data while the transfer is in progress.
+When the data transfer begins, the data becomes inaccessible on Dardel. When the data transfer is complete, the data will become accessible on Arrhenius. I.e you will never see partial data anywhere and you will not be able to access the data while the transfer is in progress. Once the data transfer is complete, the project directory on Dardel will be unlocked again for use until the project ends. Do note that data generated after the requested data transfer has been started will not be migrated. The project is responsible for migrating this data to Arrhenius themselves if needed.
 
 Since storage projects on Dardel are generally much larger, the transfer will take more time than for the other clusters.
